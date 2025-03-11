@@ -1,0 +1,832 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-markup.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-sql.min.js"></script><style>
+        .article {
+            position: relative;
+            padding-bottom: 24px;
+        }
+        
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+
+        .center-text {
+            text-align: center;
+        }
+        
+
+        .code-block {
+            overflow: hidden;
+            position: relative;
+            padding: 0;
+            border-radius: 8px;
+            font-variant-ligatures: none;
+            background-color: rgba(25, 25, 28, .05);
+            word-break: break-all;
+        }
+        
+
+        .container {
+            max-width: 100%;
+            overflow: hidden;
+            page-break-inside: avoid;
+            display: block;
+        }
+        
+
+        .control {
+            color: #19191c;
+            font-size: 16px;
+            font-weight: 670;
+        }
+        
+
+        .detached {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-bottom: 8px;
+        }
+        
+
+        .header-row {
+            background: #e6e6e6;
+        }
+        
+
+        .image {
+            max-width: 100%;
+            max-height: 90vh;
+            height: auto;
+        }
+        
+
+        .image-container {
+            max-width: 100vw;
+        }
+        
+
+        .image-size {
+            height: auto;
+        }
+        
+
+        .inline-code {
+            border-radius: 4px;
+            display: inline;
+            padding: 2px 1px;
+            font-family: JetBrains Sans,monospace;
+            background: #e6e6e6;
+        }
+        
+
+        .list {
+            list-style-type: disc;
+            padding-left: 0;
+            margin-left: 15px;
+        }
+        
+
+        .list-item {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            margin-left: 4px;
+        }
+        
+
+        .main-title {
+            padding-bottom: 24px;
+            margin-top: 0;
+            font-size: 40px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+
+        .mermaid {
+            page-break-inside: avoid;
+        }
+        
+        /* Light theme */
+/** Common */
+#mermaid .label, #mermaid {font-family:"trebuchet ms",arial,sans-serif; font-size:16px;fill:#333;}#mermaid .error-icon{fill:#552222;}#mermaid .error-text{fill:#552222;stroke:#552222;}#mermaid .edge-thickness-normal{stroke-width:2px;}#mermaid .edge-thickness-thick{stroke-width:3.5px;}#mermaid .edge-pattern-solid{stroke-dasharray:0;}#mermaid .edge-pattern-dashed{stroke-dasharray:3;}#mermaid .edge-pattern-dotted{stroke-dasharray:2;}#mermaid .marker{fill:#333333;stroke:#333333;}#mermaid .marker.cross{stroke:#333333;} #mermaid {max-width: 100%;}
+/** Flowchart */
+#mermaid .cluster-label text{fill:#333;}#mermaid .cluster-label span{color:#333;}#mermaid .label text,#mermaid span{fill:#333;color:#333;}#mermaid .node rect,#mermaid .node circle,#mermaid .node ellipse,#mermaid .node polygon,#mermaid .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid .node .label{text-align:center;}#mermaid .node.clickable{cursor:pointer;}#mermaid .arrowheadPath{fill:#333333;}#mermaid .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid .flowchart-link{stroke:#333333;fill:none;}#mermaid .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaid .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid .cluster text{fill:#333;}#mermaid .cluster span{color:#333;}#mermaid div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}
+/** Sequence diagram */
+#mermaid .actor{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaid text.actor>tspan{fill:black;stroke:none;}#mermaid .actor-line{stroke:grey;}#mermaid .messageLine0{stroke-width:1.5;stroke-dasharray:none;stroke:#333;}#mermaid .messageLine1{stroke-width:1.5;stroke-dasharray:2,2;stroke:#333;}#mermaid #arrowhead path{fill:#333;stroke:#333;}#mermaid .sequenceNumber{fill:white;}#mermaid #sequencenumber{fill:#333;}#mermaid #crosshead path{fill:#333;stroke:#333;}#mermaid .messageText{fill:#333;stroke:none;}#mermaid .labelBox{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaid .labelText,#mermaid .labelText>tspan{fill:black;stroke:none;}#mermaid .loopText,#mermaid .loopText>tspan{fill:black;stroke:none;}#mermaid .loopLine{stroke-width:2px;stroke-dasharray:2,2;stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);}#mermaid .note{stroke:#aaaa33;fill:#fff5ad;}#mermaid .noteText,#mermaid .noteText>tspan{fill:black;stroke:none;}#mermaid .activation0{fill:#f4f4f4;stroke:#666;}#mermaid .activation1{fill:#f4f4f4;stroke:#666;}#mermaid .activation2{fill:#f4f4f4;stroke:#666;}#mermaid .actorPopupMenu{position:absolute;}#mermaid .actorPopupMenuPanel{position:absolute;fill:#ECECFF;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);filter:drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}#mermaid .actor-man line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaid .actor-man circle,#mermaid line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;stroke-width:2px;}
+/** Gantt */
+#mermaid .exclude-range{fill:#eeeeee;}#mermaid .section{stroke:none;opacity:0.2;}#mermaid .section0{fill:rgba(102, 102, 255, 0.49);}#mermaid .section2{fill:#fff400;}#mermaid .section1,#mermaid .section3{fill:white;opacity:0.2;}#mermaid .sectionTitle0{fill:#333;}#mermaid .sectionTitle1{fill:#333;}#mermaid .sectionTitle2{fill:#333;}#mermaid .sectionTitle3{fill:#333;}#mermaid .sectionTitle{text-anchor:start;}#mermaid .grid .tick{stroke:lightgrey;opacity:0.8;shape-rendering:crispEdges;}#mermaid .grid .tick text{fill:#333;}#mermaid .grid path{stroke-width:0;}#mermaid .today{fill:none;stroke:red;stroke-width:2px;}#mermaid .task{stroke-width:2;}#mermaid .taskText{text-anchor:middle;}#mermaid .taskTextOutsideRight{fill:black;text-anchor:start;}#mermaid .taskTextOutsideLeft{fill:black;text-anchor:end;}#mermaid .task.clickable{cursor:pointer;}#mermaid .taskText.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaid .taskTextOutsideLeft.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaid .taskTextOutsideRight.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaid .taskText0,#mermaid .taskText1,#mermaid .taskText2,#mermaid .taskText3{fill:white;}#mermaid .task0,#mermaid .task1,#mermaid .task2,#mermaid .task3{fill:#8a90dd;stroke:#534fbc;}#mermaid .taskTextOutside0,#mermaid .taskTextOutside2{fill:black;}#mermaid .taskTextOutside1,#mermaid .taskTextOutside3{fill:black;}#mermaid .active0,#mermaid .active1,#mermaid .active2,#mermaid .active3{fill:#bfc7ff;stroke:#534fbc;}#mermaid .activeText0,#mermaid .activeText1,#mermaid .activeText2,#mermaid .activeText3{fill:black!important;}#mermaid .done0,#mermaid .done1,#mermaid .done2,#mermaid .done3{stroke:grey;fill:lightgrey;stroke-width:2;}#mermaid .doneText0,#mermaid .doneText1,#mermaid .doneText2,#mermaid .doneText3{fill:black!important;}#mermaid .crit0,#mermaid .crit1,#mermaid .crit2,#mermaid .crit3{stroke:#ff8888;fill:red;stroke-width:2;}#mermaid .activeCrit0,#mermaid .activeCrit1,#mermaid .activeCrit2,#mermaid .activeCrit3{stroke:#ff8888;fill:#bfc7ff;stroke-width:2;}#mermaid .doneCrit0,#mermaid .doneCrit1,#mermaid .doneCrit2,#mermaid .doneCrit3{stroke:#ff8888;fill:lightgrey;stroke-width:2;cursor:pointer;shape-rendering:crispEdges;}#mermaid .milestone{transform:rotate(45deg) scale(0.8,0.8);}#mermaid .milestoneText{font-style:italic;}#mermaid .doneCritText0,#mermaid .doneCritText1,#mermaid .doneCritText2,#mermaid .doneCritText3{fill:black!important;}#mermaid .activeCritText0,#mermaid .activeCritText1,#mermaid .activeCritText2,#mermaid .activeCritText3{fill:black!important;}#mermaid .titleText{text-anchor:middle;font-size:18px;fill:#333;}
+/** Class diagram */
+#mermaid g.classGroup text{fill:#9370DB;fill:#131300;stroke:none;font-size:10px;}#mermaid g.classGroup text .title{font-weight:bolder;}#mermaid .nodeLabel,#mermaid .edgeLabel{color:#131300;}#mermaid .edgeLabel .label rect{fill:#ECECFF;}#mermaid .label text{fill:#131300;}#mermaid .edgeLabel .label span{background:#ECECFF;}#mermaid .classTitle{font-weight:bolder;}#mermaid .node rect,#mermaid .node circle,#mermaid .node ellipse,#mermaid .node polygon,#mermaid .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid .divider{stroke:#9370DB;stroke:1;}#mermaid g.clickable{cursor:pointer;}#mermaid g.classGroup rect{fill:#ECECFF;stroke:#9370DB;}#mermaid g.classGroup line{stroke:#9370DB;stroke-width:1;}#mermaid .classLabel .box{stroke:none;stroke-width:0;fill:#ECECFF;opacity:0.5;}#mermaid .classLabel .label{fill:#9370DB;font-size:10px;}#mermaid .relation{stroke:#333333;stroke-width:1;fill:none;}#mermaid .dashed-line{stroke-dasharray:3;}#mermaid #compositionStart,#mermaid .composition{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#mermaid #compositionEnd,#mermaid .composition{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#mermaid #dependencyStart,#mermaid .dependency{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#mermaid #dependencyStart,#mermaid .dependency{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#mermaid #extensionStart,#mermaid .extension{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#mermaid #extensionEnd,#mermaid .extension{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#mermaid #aggregationStart,#mermaid .aggregation{fill:#ECECFF!important;stroke:#333333!important;stroke-width:1;}#mermaid #aggregationEnd,#mermaid .aggregation{fill:#ECECFF!important;stroke:#333333!important;stroke-width:1;}#mermaid #lollipopStart,#mermaid .lollipop{fill:#ECECFF!important;stroke:#333333!important;stroke-width:1;}#mermaid #lollipopEnd,#mermaid .lollipop{fill:#ECECFF!important;stroke:#333333!important;stroke-width:1;}#mermaid .edgeTerminals{font-size:11px;}
+/** Git graph */
+#mermaid .commit-id,#mermaid .commit-msg{fill:lightgrey;}#mermaid .commit0{stroke:hsl(240, 100%, 46.2745098039%);fill:hsl(240, 100%, 46.2745098039%);}#mermaid .commit-highlight0{stroke:hsl(60, 100%, 3.7254901961%);fill:hsl(60, 100%, 3.7254901961%);}#mermaid .label0{fill:hsl(240, 100%, 46.2745098039%);}#mermaid .arrow0{stroke:hsl(240, 100%, 46.2745098039%);}#mermaid .branch-label1{fill:black;}#mermaid .commit1{stroke:hsl(60, 100%, 43.5294117647%);fill:hsl(60, 100%, 43.5294117647%);}#mermaid .commit-highlight1{stroke:rgb(0, 0, 160.5);fill:rgb(0, 0, 160.5);}#mermaid .label1{fill:hsl(60, 100%, 43.5294117647%);}#mermaid .arrow1{stroke:hsl(60, 100%, 43.5294117647%);}#mermaid .branch-label2{fill:black;}#mermaid .commit2{stroke:hsl(80, 100%, 46.2745098039%);fill:hsl(80, 100%, 46.2745098039%);}#mermaid .commit-highlight2{stroke:rgb(48.8333333334, 0, 146.5000000001);fill:rgb(48.8333333334, 0, 146.5000000001);}#mermaid .label2{fill:hsl(80, 100%, 46.2745098039%);}#mermaid .arrow2{stroke:hsl(80, 100%, 46.2745098039%);}#mermaid .branch-label3{fill:#ffffff;}#mermaid .commit3{stroke:hsl(210, 100%, 46.2745098039%);fill:hsl(210, 100%, 46.2745098039%);}#mermaid .commit-highlight3{stroke:rgb(146.5000000001, 73.2500000001, 0);fill:rgb(146.5000000001, 73.2500000001, 0);}#mermaid .label3{fill:hsl(210, 100%, 46.2745098039%);}#mermaid .arrow3{stroke:hsl(210, 100%, 46.2745098039%);}#mermaid .branch-label4{fill:black;}#mermaid .commit4{stroke:hsl(180, 100%, 46.2745098039%);fill:hsl(180, 100%, 46.2745098039%);}#mermaid .commit-highlight4{stroke:rgb(146.5000000001, 0, 0);fill:rgb(146.5000000001, 0, 0);}#mermaid .label4{fill:hsl(180, 100%, 46.2745098039%);}#mermaid .arrow4{stroke:hsl(180, 100%, 46.2745098039%);}#mermaid .branch-label5{fill:black;}#mermaid .commit5{stroke:hsl(150, 100%, 46.2745098039%);fill:hsl(150, 100%, 46.2745098039%);}#mermaid .commit-highlight5{stroke:rgb(146.5000000001, 0, 73.2500000001);fill:rgb(146.5000000001, 0, 73.2500000001);}#mermaid .label5{fill:hsl(150, 100%, 46.2745098039%);}#mermaid .arrow5{stroke:hsl(150, 100%, 46.2745098039%);}#mermaid .branch-label6{fill:black;}#mermaid .commit6{stroke:hsl(300, 100%, 46.2745098039%);fill:hsl(300, 100%, 46.2745098039%);}#mermaid .commit-highlight6{stroke:rgb(0, 146.5000000001, 0);fill:rgb(0, 146.5000000001, 0);}#mermaid .label6{fill:hsl(300, 100%, 46.2745098039%);}#mermaid .arrow6{stroke:hsl(300, 100%, 46.2745098039%);}#mermaid .branch-label7{fill:black;}#mermaid .commit7{stroke:hsl(0, 100%, 46.2745098039%);fill:hsl(0, 100%, 46.2745098039%);}#mermaid .commit-highlight7{stroke:rgb(0, 146.5000000001, 146.5000000001);fill:rgb(0, 146.5000000001, 146.5000000001);}#mermaid .label7{fill:hsl(0, 100%, 46.2745098039%);}#mermaid .arrow7{stroke:hsl(0, 100%, 46.2745098039%);}#mermaid .branch{stroke-width:1;stroke:#333333;stroke-dasharray:2;}#mermaid .commit-label{font-size:10px;fill:#000021;}#mermaid .commit-label-bkg{font-size:10px;fill:#ffffde;opacity:0.5;}#mermaid .tag-label{font-size:10px;fill:#131300;}#mermaid .tag-label-bkg{fill:#ECECFF;stroke:hsl(240, 60%, 86.2745098039%);}#mermaid .tag-hole{fill:#333;}#mermaid .commit-merge{stroke:#ECECFF;fill:#ECECFF;}#mermaid .commit-reverse{stroke:#ECECFF;fill:#ECECFF;stroke-width:3;}#mermaid .commit-highlight-inner{stroke:#ECECFF;fill:#ECECFF;}#mermaid .arrow{stroke-width:8;stroke-linecap:round;fill:none;}
+#mermaid .branchLabel .label {font-size:16px;} #mermaid g.label.branch-label0 text, #mermaid g.label.branch-label3 text { fill: #eee; }
+/** Entity relationship */
+#mermaid .entityBox{fill:#ECECFF;stroke:#9370DB;}#mermaid .attributeBoxOdd{fill:#ffffff;stroke:#9370DB;}#mermaid .attributeBoxEven{fill:#f2f2f2;stroke:#9370DB;}#mermaid .relationshipLabelBox{fill:hsl(80, 100%, 96.2745098039%);opacity:0.7;background-color:hsl(80, 100%, 96.2745098039%);}#mermaid .relationshipLabelBox rect{opacity:0.5;}#mermaid .relationshipLine{stroke:#333333;}
+/** Journey */
+#mermaid .label{color:#333;}#mermaid .mouth{stroke:#666;}#mermaid line{stroke:#333;}#mermaid .legend{fill:#333;}#mermaid .label text{fill:#333;}#mermaid .label{color:#333;}#mermaid .face{fill:#FFF8DC;stroke:#999;}#mermaid .node rect,#mermaid .node circle,#mermaid .node ellipse,#mermaid .node polygon,#mermaid .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid .node .label{text-align:center;}#mermaid .node.clickable{cursor:pointer;}#mermaid .arrowheadPath{fill:#333333;}#mermaid .edgePath .path{stroke:#333333;stroke-width:1.5px;}#mermaid .flowchart-link{stroke:#333333;fill:none;}#mermaid .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaid .edgeLabel rect{opacity:0.5;}#mermaid .cluster text{fill:#333;}#mermaid div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid .task-type-0,#mermaid .section-type-0{fill:#ECECFF;}#mermaid .task-type-1,#mermaid .section-type-1{fill:#ffffde;}#mermaid .task-type-2,#mermaid .section-type-2{fill:hsl(304, 100%, 96.2745098039%);}#mermaid .task-type-3,#mermaid .section-type-3{fill:hsl(124, 100%, 93.5294117647%);}#mermaid .task-type-4,#mermaid .section-type-4{fill:hsl(176, 100%, 96.2745098039%);}#mermaid .task-type-5,#mermaid .section-type-5{fill:hsl(-4, 100%, 93.5294117647%);}#mermaid .task-type-6,#mermaid .section-type-6{fill:hsl(8, 100%, 96.2745098039%);}#mermaid .task-type-7,#mermaid .section-type-7{fill:hsl(188, 100%, 93.5294117647%);}
+/** State diagram */
+#mermaid defs #statediagram-barbEnd{fill:#333333;stroke:#333333;}#mermaid g.stateGroup text{fill:#9370DB;stroke:none;font-size:10px;}#mermaid g.stateGroup text{fill:#333;stroke:none;font-size:10px;}#mermaid g.stateGroup .state-title{font-weight:bolder;fill:#131300;}#mermaid g.stateGroup rect{fill:#ECECFF;stroke:#9370DB;}#mermaid g.stateGroup line{stroke:#333333;stroke-width:1;}#mermaid .transition{stroke:#333333;stroke-width:1;fill:none;}#mermaid .stateGroup .composit{fill:white;border-bottom:1px;}#mermaid .stateGroup .alt-composit{fill:#e0e0e0;border-bottom:1px;}#mermaid .state-note{stroke:#aaaa33;fill:#fff5ad;}#mermaid .state-note text{fill:black;stroke:none;font-size:10px;}#mermaid .stateLabel .box{stroke:none;stroke-width:0;fill:#ECECFF;opacity:0.5;}#mermaid .edgeLabel .label rect{fill:#ECECFF;opacity:0.5;}#mermaid .edgeLabel .label text{fill:#333;}#mermaid .label div .edgeLabel{color:#333;}#mermaid .stateLabel text{fill:#131300;font-size:10px;font-weight:bold;}#mermaid .node circle.state-start{fill:#333333;stroke:#333333;}#mermaid .node .fork-join{fill:#333333;stroke:#333333;}#mermaid .node circle.state-end{fill:#9370DB;stroke:white;stroke-width:1.5;}#mermaid .end-state-inner{fill:white;stroke-width:1.5;}#mermaid .node rect{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid .node polygon{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid #statediagram-barbEnd{fill:#333333;}#mermaid .statediagram-cluster rect{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid .cluster-label,#mermaid .nodeLabel{color:#131300;}#mermaid .statediagram-cluster rect.outer{rx:5px;ry:5px;}#mermaid .statediagram-state .divider{stroke:#9370DB;}#mermaid .statediagram-state .title-state{rx:5px;ry:5px;}#mermaid .statediagram-cluster.statediagram-cluster .inner{fill:white;}#mermaid .statediagram-cluster.statediagram-cluster-alt .inner{fill:#f0f0f0;}#mermaid .statediagram-cluster .inner{rx:0;ry:0;}#mermaid .statediagram-state rect.basic{rx:5px;ry:5px;}#mermaid .statediagram-state rect.divider{stroke-dasharray:10,10;fill:#f0f0f0;}#mermaid .note-edge{stroke-dasharray:5;}#mermaid .statediagram-note rect{fill:#fff5ad;stroke:#aaaa33;stroke-width:1px;rx:0;ry:0;}#mermaid .statediagram-note rect{fill:#fff5ad;stroke:#aaaa33;stroke-width:1px;rx:0;ry:0;}#mermaid .statediagram-note text{fill:black;}#mermaid .statediagram-note .nodeLabel{color:black;}#mermaid .statediagram .edgeLabel{color:red;}#mermaid #dependencyStart,#mermaid #dependencyEnd{fill:#333333;stroke:#333333;stroke-width:1;}
+/** Pie chart */
+#mermaid .pieCircle{stroke:#222;stroke-width:1px;}#mermaid .pieTitleText{text-anchor:middle;font-size:25px;fill:black;}#mermaid .slice{fill:#333;font-size:17px;}#mermaid .legend text{fill:black;font-size:17px;}
+/** Requirements */
+#mermaid marker{fill:#333333;stroke:#333333;}#mermaid marker.cross{stroke:#333333;}#mermaid svg{font-size:16px;}#mermaid .reqBox{fill:#ECECFF;fill-opacity:100%;stroke:hsl(240, 60%, 86.2745098039%);stroke-width:hsl(240, 60%, 86.2745098039%);}#mermaid .reqTitle,#mermaid .reqLabel{fill:#131300;}#mermaid .reqLabelBox{fill:#e8e8e8;fill-opacity:100%;}#mermaid .req-title-line{stroke:hsl(240, 60%, 86.2745098039%);stroke-width:hsl(240, 60%, 86.2745098039%);}#mermaid .relationshipLine{stroke:#333333;stroke-width:1;}#mermaid .relationshipLabel{fill:black;}
+/** C4 system */
+#mermaid .person{stroke:calculated;fill:calculated;}
+/** Mind map */
+#mermaid .section-root.mindmap-node { fill: hsl(240, 100%, 50%); } #mermaid .section-root.mindmap-node text { fill: white; }
+#mermaid .mindmap-edges .edge-depth-0 { stroke-width: 14; }
+#mermaid .mindmap-edges .edge-depth-1 { stroke-width: 11; }
+#mermaid .mindmap-edges .edge-depth-2 { stroke-width: 8; }
+#mermaid .mindmap-edges .edge-depth-3 { stroke-width: 5; }
+#mermaid .mindmap-edges .edge-depth-4 { stroke-width: 3; }
+#mermaid .mindmap-edges .edge-depth-5 { stroke-width: 2; }
+#mermaid .mindmap-edges .edge-depth-6 { stroke-width: 1; }
+#mermaid .mindmap-edges .section-edge-0,  #mermaid .mindmap-node.section-0  path { fill: hsl(60, 100%, 70%); stroke: hsl(60, 100%, 70%); } #mermaid .mindmap-node.section-0  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-1,  #mermaid .mindmap-node.section-1  path { fill: hsl(170, 90%, 70%); stroke: hsl(170, 90%, 70%); } #mermaid .mindmap-node.section-1  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-2,  #mermaid .mindmap-node.section-2  path { fill: hsl(280, 90%, 70%); stroke: hsl(280, 90%, 70%); } #mermaid .mindmap-node.section-2  text { fill: white; }
+#mermaid .mindmap-edges .section-edge-3,  #mermaid .mindmap-node.section-3  path { fill: hsl(30, 90%, 70%);  stroke: hsl(30, 90%, 70%);  } #mermaid .mindmap-node.section-3  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-4,  #mermaid .mindmap-node.section-4  path { fill: hsl(140, 90%, 70%); stroke: hsl(140, 90%, 70%); } #mermaid .mindmap-node.section-4  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-5,  #mermaid .mindmap-node.section-5  path { fill: hsl(250, 90%, 70%); stroke: hsl(250, 90%, 70%); } #mermaid .mindmap-node.section-5  text { fill: white; }
+#mermaid .mindmap-edges .section-edge-6,  #mermaid .mindmap-node.section-6  path { fill: hsl(0, 90%, 70%);   stroke: hsl(0, 90%, 70%);   } #mermaid .mindmap-node.section-6  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-7,  #mermaid .mindmap-node.section-7  path { fill: hsl(110, 90%, 70%); stroke: hsl(110, 90%, 70%); } #mermaid .mindmap-node.section-7  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-8,  #mermaid .mindmap-node.section-8  path { fill: hsl(220, 90%, 70%); stroke: hsl(220, 90%, 70%); } #mermaid .mindmap-node.section-8  text { fill: white; }
+#mermaid .mindmap-edges .section-edge-9,  #mermaid .mindmap-node.section-9  path { fill: hsl(330, 90%, 70%); stroke: hsl(330, 90%, 70%); } #mermaid .mindmap-node.section-9  text { fill: black; }
+#mermaid .mindmap-edges .section-edge-10, #mermaid .mindmap-node.section-10 path { fill: hsl(80, 90%, 70%);  stroke: hsl(80, 90%, 70%);  } #mermaid .mindmap-node.section-10 text { fill: black; }
+#mermaid .mindmap-edges .section-edge-11, #mermaid .mindmap-node.section-11 path { fill: hsl(190, 90%, 70%); stroke: hsl(190, 90%, 70%); } #mermaid .mindmap-node.section-11 text { fill: black; }
+#mermaid .mindmap-edges .section-edge-12, #mermaid .mindmap-node.section-12 path { fill: hsl(300, 90%, 70%); stroke: hsl(300, 90%, 70%); } #mermaid .mindmap-node.section-12 text { fill: black; }
+/** Timeline */
+#mermaid .timeline text tspan { fill: #222; } #mermaid .timeline-node path { fill: #ccc; }
+
+/* Dark theme */
+/** Common */
+html.theme-dark #mermaid {fill:#ccc;}html.theme-dark #mermaid .error-icon{fill:#a44141;}html.theme-dark #mermaid .error-text{fill:#ddd;stroke:#ddd;}html.theme-dark #mermaid .edge-pattern-solid{stroke-dasharray:0;}html.theme-dark #mermaid .edge-pattern-dashed{stroke-dasharray:3;}html.theme-dark #mermaid .edge-pattern-dotted{stroke-dasharray:2;}html.theme-dark #mermaid .marker{fill:lightgrey;stroke:lightgrey;}html.theme-dark #mermaid .marker.cross{stroke:lightgrey;}
+/** Flowchart */
+html.theme-dark #mermaid .label{color:#ccc;}html.theme-dark #mermaid .cluster-label text{fill:#F9FFFE;}html.theme-dark #mermaid .cluster-label span{color:#F9FFFE;}html.theme-dark #mermaid .label text,html.theme-dark #mermaid span{fill:#ccc;color:#ccc;}html.theme-dark #mermaid .node rect,html.theme-dark #mermaid .node circle,html.theme-dark #mermaid .node ellipse,html.theme-dark #mermaid .node polygon,html.theme-dark #mermaid .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}html.theme-dark #mermaid .node .label{text-align:center;}html.theme-dark #mermaid .node.clickable{cursor:pointer;}html.theme-dark #mermaid .arrowheadPath{fill:lightgrey;}html.theme-dark #mermaid .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}html.theme-dark #mermaid .flowchart-link{stroke:lightgrey;fill:none;}html.theme-dark #mermaid .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}html.theme-dark #mermaid .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}html.theme-dark #mermaid .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}html.theme-dark #mermaid .cluster text{fill:#F9FFFE;}html.theme-dark #mermaid .cluster span{color:#F9FFFE;}html.theme-dark #mermaid div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}html.theme-dark #mermaid :root{--mermaid-}
+/** Sequence diagram */
+html.theme-dark #mermaid .actor{stroke:#81B1DB;fill:#1f2020;}html.theme-dark #mermaid text.actor>tspan{fill:lightgrey;stroke:none;}html.theme-dark #mermaid .actor-line{stroke:lightgrey;}html.theme-dark #mermaid .messageLine0{stroke-width:1.5;stroke-dasharray:none;stroke:lightgrey;}html.theme-dark #mermaid .messageLine1{stroke-width:1.5;stroke-dasharray:2,2;stroke:lightgrey;}html.theme-dark #mermaid #arrowhead path{fill:lightgrey;stroke:lightgrey;}html.theme-dark #mermaid .sequenceNumber{fill:black;}html.theme-dark #mermaid #sequencenumber{fill:lightgrey;}html.theme-dark #mermaid #crosshead path{fill:lightgrey;stroke:lightgrey;}html.theme-dark #mermaid .messageText{fill:lightgrey;stroke:none;}html.theme-dark #mermaid .labelBox{stroke:#81B1DB;fill:#1f2020;}html.theme-dark #mermaid .labelText,html.theme-dark #mermaid .labelText>tspan{fill:lightgrey;stroke:none;}html.theme-dark #mermaid .loopText,html.theme-dark #mermaid .loopText>tspan{fill:lightgrey;stroke:none;}html.theme-dark #mermaid .loopLine{stroke-width:2px;stroke-dasharray:2,2;stroke:#81B1DB;fill:#81B1DB;}html.theme-dark #mermaid .note{stroke:hsl(180, 0%, 18.3529411765%);fill:hsl(180, 1.5873015873%, 28.3529411765%);}html.theme-dark #mermaid .noteText,html.theme-dark #mermaid .noteText>tspan{fill:rgb(183.8476190475, 181.5523809523, 181.5523809523);stroke:none;}html.theme-dark #mermaid .activation0{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:#81B1DB;}html.theme-dark #mermaid .activation1{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:#81B1DB;}html.theme-dark #mermaid .activation2{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:#81B1DB;}html.theme-dark #mermaid .actorPopupMenu{position:absolute;}html.theme-dark #mermaid .actorPopupMenuPanel{position:absolute;fill:#1f2020;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);filter:drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}html.theme-dark #mermaid .actor-man line{stroke:#81B1DB;fill:#1f2020;}html.theme-dark #mermaid .actor-man circle,html.theme-dark #mermaid line{stroke:#81B1DB;fill:#1f2020;stroke-width:2px;}html.theme-dark #mermaid :root{--mermaid-}
+/** Gantt */
+html.theme-dark #mermaid .exclude-range{fill:#444;}html.theme-dark #mermaid .section{stroke:none;opacity:0.2;}html.theme-dark #mermaid .section0{fill:hsl(52.9411764706, 28.813559322%, 58.431372549%);}html.theme-dark #mermaid .section2{fill:#EAE8D9;}html.theme-dark #mermaid .section1,html.theme-dark #mermaid .section3{fill:#333;opacity:0.2;}html.theme-dark #mermaid .sectionTitle0{fill:#F9FFFE;}html.theme-dark #mermaid .sectionTitle1{fill:#F9FFFE;}html.theme-dark #mermaid .sectionTitle2{fill:#F9FFFE;}html.theme-dark #mermaid .sectionTitle3{fill:#F9FFFE;}html.theme-dark #mermaid .sectionTitle{text-anchor:start;}html.theme-dark #mermaid .grid .tick{stroke:lightgrey;opacity:0.8;shape-rendering:crispEdges;}html.theme-dark #mermaid .grid .tick text{fill:#ccc;}html.theme-dark #mermaid .grid path{stroke-width:0;}html.theme-dark #mermaid .today{fill:none;stroke:#DB5757;stroke-width:2px;}html.theme-dark #mermaid .task{stroke-width:2;}html.theme-dark #mermaid .taskText{text-anchor:middle;}html.theme-dark #mermaid .taskTextOutsideRight{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%);text-anchor:start;}html.theme-dark #mermaid .taskTextOutsideLeft{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%);text-anchor:end;}html.theme-dark #mermaid .task.clickable{cursor:pointer;}html.theme-dark #mermaid .taskText.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}html.theme-dark #mermaid .taskTextOutsideLeft.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}html.theme-dark #mermaid .taskTextOutsideRight.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}html.theme-dark #mermaid .taskText0,html.theme-dark #mermaid .taskText1,html.theme-dark #mermaid .taskText2,html.theme-dark #mermaid .taskText3{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%);}html.theme-dark #mermaid .task0,html.theme-dark #mermaid .task1,html.theme-dark #mermaid .task2,html.theme-dark #mermaid .task3{fill:hsl(180, 1.5873015873%, 35.3529411765%);stroke:#ffffff;}html.theme-dark #mermaid .taskTextOutside0,html.theme-dark #mermaid .taskTextOutside2{fill:lightgrey;}html.theme-dark #mermaid .taskTextOutside1,html.theme-dark #mermaid .taskTextOutside3{fill:lightgrey;}html.theme-dark #mermaid .active0,html.theme-dark #mermaid .active1,html.theme-dark #mermaid .active2,html.theme-dark #mermaid .active3{fill:#81B1DB;stroke:#ffffff;}html.theme-dark #mermaid .activeText0,html.theme-dark #mermaid .activeText1,html.theme-dark #mermaid .activeText2,html.theme-dark #mermaid .activeText3{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%)!important;}html.theme-dark #mermaid .done0,html.theme-dark #mermaid .done1,html.theme-dark #mermaid .done2,html.theme-dark #mermaid .done3{stroke:grey;fill:lightgrey;stroke-width:2;}html.theme-dark #mermaid .doneText0,html.theme-dark #mermaid .doneText1,html.theme-dark #mermaid .doneText2,html.theme-dark #mermaid .doneText3{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%)!important;}html.theme-dark #mermaid .crit0,html.theme-dark #mermaid .crit1,html.theme-dark #mermaid .crit2,html.theme-dark #mermaid .crit3{stroke:#E83737;fill:#E83737;stroke-width:2;}html.theme-dark #mermaid .activeCrit0,html.theme-dark #mermaid .activeCrit1,html.theme-dark #mermaid .activeCrit2,html.theme-dark #mermaid .activeCrit3{stroke:#E83737;fill:#81B1DB;stroke-width:2;}html.theme-dark #mermaid .doneCrit0,html.theme-dark #mermaid .doneCrit1,html.theme-dark #mermaid .doneCrit2,html.theme-dark #mermaid .doneCrit3{stroke:#E83737;fill:lightgrey;stroke-width:2;cursor:pointer;shape-rendering:crispEdges;}html.theme-dark #mermaid .milestone{transform:rotate(45deg) scale(0.8,0.8);}html.theme-dark #mermaid .milestoneText{font-style:italic;}html.theme-dark #mermaid .doneCritText0,html.theme-dark #mermaid .doneCritText1,html.theme-dark #mermaid .doneCritText2,html.theme-dark #mermaid .doneCritText3{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%)!important;}html.theme-dark #mermaid .activeCritText0,html.theme-dark #mermaid .activeCritText1,html.theme-dark #mermaid .activeCritText2,html.theme-dark #mermaid .activeCritText3{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%)!important;}html.theme-dark #mermaid .titleText{text-anchor:middle;fill:#ccc;}html.theme-dark #mermaid :root{--mermaid-}
+/** Class diagram */
+html.theme-dark #mermaid g.classGroup text{fill:#e0dfdf;stroke:none;}html.theme-dark #mermaid g.classGroup text .title{font-weight:bolder;}html.theme-dark #mermaid .nodeLabel,html.theme-dark #mermaid .edgeLabel{color:#e0dfdf;}html.theme-dark #mermaid .edgeLabel .label rect{fill:#1f2020;}html.theme-dark #mermaid .label text{fill:#e0dfdf;}html.theme-dark #mermaid .edgeLabel .label span{background:#1f2020;}html.theme-dark #mermaid .classTitle{font-weight:bolder;}html.theme-dark #mermaid .node rect,html.theme-dark #mermaid .node circle,html.theme-dark #mermaid .node ellipse,html.theme-dark #mermaid .node polygon,html.theme-dark #mermaid .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}html.theme-dark #mermaid .divider{stroke:#81B1DB;stroke:1;}html.theme-dark #mermaid g.clickable{cursor:pointer;}html.theme-dark #mermaid g.classGroup rect{fill:#1f2020;stroke:#81B1DB;}html.theme-dark #mermaid g.classGroup line{stroke:#81B1DB;stroke-width:1;}html.theme-dark #mermaid .classLabel .box{stroke:none;stroke-width:0;fill:#1f2020;opacity:0.5;}html.theme-dark #mermaid .classLabel .label{fill:#81B1DB;}html.theme-dark #mermaid .relation{stroke:lightgrey;stroke-width:1;fill:none;}html.theme-dark #mermaid .dashed-line{stroke-dasharray:3;}html.theme-dark #mermaid #compositionStart,html.theme-dark #mermaid .composition{fill:lightgrey!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #compositionEnd,html.theme-dark #mermaid .composition{fill:lightgrey!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #dependencyStart,html.theme-dark #mermaid .dependency{fill:lightgrey!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #dependencyStart,html.theme-dark #mermaid .dependency{fill:lightgrey!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #extensionStart,html.theme-dark #mermaid .extension{fill:lightgrey!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #extensionEnd,html.theme-dark #mermaid .extension{fill:lightgrey!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #aggregationStart,html.theme-dark #mermaid .aggregation{fill:#1f2020!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #aggregationEnd,html.theme-dark #mermaid .aggregation{fill:#1f2020!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #lollipopStart,html.theme-dark #mermaid .lollipop{fill:#1f2020!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid #lollipopEnd,html.theme-dark #mermaid .lollipop{fill:#1f2020!important;stroke:lightgrey!important;stroke-width:1;}html.theme-dark #mermaid .edgeTerminals{}html.theme-dark #mermaid :root{--mermaid-}
+/** Git graph */
+html.theme-dark #mermaid .commit-id,html.theme-dark #mermaid .commit-msg,html.theme-dark #mermaid .branch-label{fill:lightgrey;color:lightgrey;}html.theme-dark #mermaid .branch-label0{fill:undefined;}html.theme-dark #mermaid .commit0{stroke:hsl(180, 1.5873015873%, 48.3529411765%);fill:hsl(180, 1.5873015873%, 48.3529411765%);}html.theme-dark #mermaid .commit-highlight0{stroke:rgb(133.6571428571, 129.7428571428, 129.7428571428);fill:rgb(133.6571428571, 129.7428571428, 129.7428571428);}html.theme-dark #mermaid .label0{fill:hsl(180, 1.5873015873%, 48.3529411765%);}html.theme-dark #mermaid .arrow0{stroke:hsl(180, 1.5873015873%, 48.3529411765%);}html.theme-dark #mermaid .branch-label1{fill:undefined;}html.theme-dark #mermaid .commit1{stroke:hsl(321.6393442623, 65.5913978495%, 38.2352941176%);fill:hsl(321.6393442623, 65.5913978495%, 38.2352941176%);}html.theme-dark #mermaid .commit-highlight1{stroke:rgb(93.5483870969, 221.4516129033, 139.677419355);fill:rgb(93.5483870969, 221.4516129033, 139.677419355);}html.theme-dark #mermaid .label1{fill:hsl(321.6393442623, 65.5913978495%, 38.2352941176%);}html.theme-dark #mermaid .arrow1{stroke:hsl(321.6393442623, 65.5913978495%, 38.2352941176%);}html.theme-dark #mermaid .branch-label2{fill:undefined;}html.theme-dark #mermaid .commit2{stroke:hsl(194.4, 16.5562913907%, 49.6078431373%);fill:hsl(194.4, 16.5562913907%, 49.6078431373%);}html.theme-dark #mermaid .commit-highlight2{stroke:rgb(149.4437086091, 117.6092715231, 107.5562913906);fill:rgb(149.4437086091, 117.6092715231, 107.5562913906);}html.theme-dark #mermaid .label2{fill:hsl(194.4, 16.5562913907%, 49.6078431373%);}html.theme-dark #mermaid .arrow2{stroke:hsl(194.4, 16.5562913907%, 49.6078431373%);}html.theme-dark #mermaid .branch-label3{fill:undefined;}html.theme-dark #mermaid .commit3{stroke:hsl(23.0769230769, 49.0566037736%, 40.7843137255%);fill:hsl(23.0769230769, 49.0566037736%, 40.7843137255%);}html.theme-dark #mermaid .commit-highlight3{stroke:rgb(99.9811320754, 162.7735849057, 202.0188679245);fill:rgb(99.9811320754, 162.7735849057, 202.0188679245);}html.theme-dark #mermaid .label3{fill:hsl(23.0769230769, 49.0566037736%, 40.7843137255%);}html.theme-dark #mermaid .arrow3{stroke:hsl(23.0769230769, 49.0566037736%, 40.7843137255%);}html.theme-dark #mermaid .branch-label4{fill:undefined;}html.theme-dark #mermaid .commit4{stroke:hsl(0, 83.3333333333%, 43.5294117647%);fill:hsl(0, 83.3333333333%, 43.5294117647%);}html.theme-dark #mermaid .commit-highlight4{stroke:rgb(51.5000000001, 236.5, 236.5);fill:rgb(51.5000000001, 236.5, 236.5);}html.theme-dark #mermaid .label4{fill:hsl(0, 83.3333333333%, 43.5294117647%);}html.theme-dark #mermaid .arrow4{stroke:hsl(0, 83.3333333333%, 43.5294117647%);}html.theme-dark #mermaid .branch-label5{fill:undefined;}html.theme-dark #mermaid .commit5{stroke:hsl(289.1666666667, 100%, 24.1176470588%);fill:hsl(289.1666666667, 100%, 24.1176470588%);}html.theme-dark #mermaid .commit-highlight5{stroke:rgb(154.2083333334, 255, 132.0000000001);fill:rgb(154.2083333334, 255, 132.0000000001);}html.theme-dark #mermaid .label5{fill:hsl(289.1666666667, 100%, 24.1176470588%);}html.theme-dark #mermaid .arrow5{stroke:hsl(289.1666666667, 100%, 24.1176470588%);}html.theme-dark #mermaid .branch-label6{fill:undefined;}html.theme-dark #mermaid .commit6{stroke:hsl(35.1315789474, 98.7012987013%, 40.1960784314%);fill:hsl(35.1315789474, 98.7012987013%, 40.1960784314%);}html.theme-dark #mermaid .commit-highlight6{stroke:rgb(51.331168831, 135.1948051946, 253.6688311688);fill:rgb(51.331168831, 135.1948051946, 253.6688311688);}html.theme-dark #mermaid .label6{fill:hsl(35.1315789474, 98.7012987013%, 40.1960784314%);}html.theme-dark #mermaid .arrow6{stroke:hsl(35.1315789474, 98.7012987013%, 40.1960784314%);}html.theme-dark #mermaid .branch-label7{fill:undefined;}html.theme-dark #mermaid .commit7{stroke:hsl(106.1538461538, 84.4155844156%, 35.0980392157%);fill:hsl(106.1538461538, 84.4155844156%, 35.0980392157%);}html.theme-dark #mermaid .commit-highlight7{stroke:rgb(206.1818181817, 89.948051948, 241.051948052);fill:rgb(206.1818181817, 89.948051948, 241.051948052);}html.theme-dark #mermaid .label7{fill:hsl(106.1538461538, 84.4155844156%, 35.0980392157%);}html.theme-dark #mermaid .arrow7{stroke:hsl(106.1538461538, 84.4155844156%, 35.0980392157%);}html.theme-dark #mermaid .branch{stroke-width:1;stroke:lightgrey;stroke-dasharray:2;}html.theme-dark #mermaid .commit-label{fill:rgb(183.8476190475, 181.5523809523, 181.5523809523);}html.theme-dark #mermaid .commit-label-bkg{fill:hsl(180, 1.5873015873%, 28.3529411765%);opacity:0.5;}html.theme-dark #mermaid .tag-label{fill:#e0dfdf;}html.theme-dark #mermaid .tag-label-bkg{fill:#1f2020;stroke:#cccccc;}html.theme-dark #mermaid .tag-hole{fill:#ccc;}html.theme-dark #mermaid .commit-merge{stroke:#1f2020;fill:#1f2020;}html.theme-dark #mermaid .commit-reverse{stroke:#1f2020;fill:#1f2020;stroke-width:3;}html.theme-dark #mermaid .commit-highlight-inner{stroke:#1f2020;fill:#1f2020;}html.theme-dark #mermaid .arrow{stroke-width:8;stroke-linecap:round;fill:none;}:root{--mermaid-}
+/** Entity relationship */
+html.theme-dark #mermaid .entityBox{fill:#1f2020;stroke:#81B1DB;}html.theme-dark #mermaid .attributeBoxOdd{fill:hsl(0, 0%, 32%);stroke:#81B1DB;}html.theme-dark #mermaid .attributeBoxEven{fill:hsl(0, 0%, 22%);stroke:#81B1DB;}html.theme-dark #mermaid .relationshipLabelBox{fill:hsl(20, 1.5873015873%, 12.3529411765%);opacity:0.7;background-color:hsl(20, 1.5873015873%, 12.3529411765%);}html.theme-dark #mermaid .relationshipLabelBox rect{opacity:0.5;}html.theme-dark #mermaid .relationshipLine{stroke:lightgrey;}html.theme-dark #mermaid :root{--mermaid-}
+/** Journey */
+html.theme-dark #mermaid .label{color:#ccc;}html.theme-dark #mermaid .mouth{stroke:#666;}html.theme-dark #mermaid line{stroke:#ccc;}html.theme-dark #mermaid .legend{fill:#ccc;}html.theme-dark #mermaid .label text{fill:#333;}html.theme-dark #mermaid .label{color:#ccc;}html.theme-dark #mermaid .face{fill:#FFF8DC;stroke:#999;}html.theme-dark #mermaid .node rect,html.theme-dark #mermaid .node circle,html.theme-dark #mermaid .node ellipse,html.theme-dark #mermaid .node polygon,html.theme-dark #mermaid .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}html.theme-dark #mermaid .node .label{text-align:center;}html.theme-dark #mermaid .node.clickable{cursor:pointer;}html.theme-dark #mermaid .arrowheadPath{fill:lightgrey;}html.theme-dark #mermaid .edgePath .path{stroke:lightgrey;stroke-width:1.5px;}html.theme-dark #mermaid .flowchart-link{stroke:lightgrey;fill:none;}html.theme-dark #mermaid .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}html.theme-dark #mermaid .edgeLabel rect{opacity:0.5;}html.theme-dark #mermaid .cluster text{fill:#F9FFFE;}html.theme-dark #mermaid div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}html.theme-dark #mermaid .task-type-0,html.theme-dark #mermaid .section-type-0{fill:#1f2020;}html.theme-dark #mermaid .task-type-1,html.theme-dark #mermaid .section-type-1{fill:hsl(180, 1.5873015873%, 28.3529411765%);}html.theme-dark #mermaid .task-type-2,html.theme-dark #mermaid .section-type-2{fill:hsl(244, 1.5873015873%, 12.3529411765%);}html.theme-dark #mermaid .task-type-3,html.theme-dark #mermaid .section-type-3{fill:hsl(244, 1.5873015873%, 28.3529411765%);}html.theme-dark #mermaid .task-type-4,html.theme-dark #mermaid .section-type-4{fill:hsl(116, 1.5873015873%, 12.3529411765%);}html.theme-dark #mermaid .task-type-5,html.theme-dark #mermaid .section-type-5{fill:hsl(116, 1.5873015873%, 28.3529411765%);}html.theme-dark #mermaid .task-type-6,html.theme-dark #mermaid .section-type-6{fill:hsl(308, 1.5873015873%, 12.3529411765%);}html.theme-dark #mermaid .task-type-7,html.theme-dark #mermaid .section-type-7{fill:hsl(308, 1.5873015873%, 28.3529411765%);}html.theme-dark #mermaid :root{--mermaid-}
+/** State diagram */
+html.theme-dark #mermaid defs #statediagram-barbEnd{fill:lightgrey;stroke:lightgrey;}html.theme-dark #mermaid g.stateGroup text{fill:#81B1DB;stroke:none;}html.theme-dark #mermaid g.stateGroup text{fill:#ccc;stroke:none;}html.theme-dark #mermaid g.stateGroup .state-title{font-weight:bolder;fill:#e0dfdf;}html.theme-dark #mermaid g.stateGroup rect{fill:#1f2020;stroke:#81B1DB;}html.theme-dark #mermaid g.stateGroup line{stroke:lightgrey;stroke-width:1;}html.theme-dark #mermaid .transition{stroke:lightgrey;stroke-width:1;fill:none;}html.theme-dark #mermaid .stateGroup .composit{fill:#333;border-bottom:1px;}html.theme-dark #mermaid .stateGroup .alt-composit{fill:#e0e0e0;border-bottom:1px;}html.theme-dark #mermaid .state-note{stroke:hsl(180, 0%, 18.3529411765%);fill:hsl(180, 1.5873015873%, 28.3529411765%);}html.theme-dark #mermaid .state-note text{fill:rgb(183.8476190475, 181.5523809523, 181.5523809523);stroke:none;}html.theme-dark #mermaid .stateLabel .box{stroke:none;stroke-width:0;fill:#1f2020;opacity:0.5;}html.theme-dark #mermaid .edgeLabel .label rect{fill:#1f2020;opacity:0.5;}html.theme-dark #mermaid .edgeLabel .label text{fill:#ccc;}html.theme-dark #mermaid .label div .edgeLabel{color:#ccc;}html.theme-dark #mermaid .stateLabel text{fill:#e0dfdf;font-weight:bold;}html.theme-dark #mermaid .node circle.state-start{fill:#f4f4f4;stroke:#f4f4f4;}html.theme-dark #mermaid .node .fork-join{fill:#f4f4f4;stroke:#f4f4f4;}html.theme-dark #mermaid .node circle.state-end{fill:#cccccc;stroke:#333;stroke-width:1.5;}html.theme-dark #mermaid .end-state-inner{fill:#333;stroke-width:1.5;}html.theme-dark #mermaid .node rect{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}html.theme-dark #mermaid .node polygon{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}html.theme-dark #mermaid #statediagram-barbEnd{fill:lightgrey;}html.theme-dark #mermaid .statediagram-cluster rect{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}html.theme-dark #mermaid .cluster-label,html.theme-dark #mermaid .nodeLabel{color:#e0dfdf;}html.theme-dark #mermaid .statediagram-cluster rect.outer{rx:5px;ry:5px;}html.theme-dark #mermaid .statediagram-state .divider{stroke:#81B1DB;}html.theme-dark #mermaid .statediagram-state .title-state{rx:5px;ry:5px;}html.theme-dark #mermaid .statediagram-cluster.statediagram-cluster .inner{fill:#333;}html.theme-dark #mermaid .statediagram-cluster.statediagram-cluster-alt .inner{fill:#555;}html.theme-dark #mermaid .statediagram-cluster .inner{rx:0;ry:0;}html.theme-dark #mermaid .statediagram-state rect.basic{rx:5px;ry:5px;}html.theme-dark #mermaid .statediagram-state rect.divider{stroke-dasharray:10,10;fill:#555;}html.theme-dark #mermaid .note-edge{stroke-dasharray:5;}html.theme-dark #mermaid .statediagram-note rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:hsl(180, 0%, 18.3529411765%);stroke-width:1px;rx:0;ry:0;}html.theme-dark #mermaid .statediagram-note rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:hsl(180, 0%, 18.3529411765%);stroke-width:1px;rx:0;ry:0;}html.theme-dark #mermaid .statediagram-note text{fill:rgb(183.8476190475, 181.5523809523, 181.5523809523);}html.theme-dark #mermaid .statediagram-note .nodeLabel{color:rgb(183.8476190475, 181.5523809523, 181.5523809523);}html.theme-dark #mermaid .statediagram .edgeLabel{color:red;}html.theme-dark #mermaid #dependencyStart,html.theme-dark #mermaid #dependencyEnd{fill:lightgrey;stroke:lightgrey;stroke-width:1;}html.theme-dark #mermaid :root{--mermaid-}
+/** Pie chart */
+html.theme-dark #mermaid .pieCircle{filter: brightness(0.7);} html.theme-dark #mermaid[aria-roledescription=pie] .legend rect { filter: brightness(0.7); } html.theme-dark #mermaid .pieTitleText{text-anchor:middle;fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%);}html.theme-dark #mermaid .slice{fill:#222;}html.theme-dark #mermaid .legend text{fill:hsl(28.5714285714, 17.3553719008%, 86.2745098039%);}html.theme-dark #mermaid :root{--mermaid-}
+/** Requirements */
+html.theme-dark #mermaid marker{fill:lightgrey;stroke:lightgrey;}html.theme-dark #mermaid marker.cross{stroke:lightgrey;}html.theme-dark #mermaid svg{}html.theme-dark #mermaid .reqBox{fill:#1f2020;fill-opacity:100%;stroke:#cccccc;stroke-width:#cccccc;}html.theme-dark #mermaid .reqTitle,html.theme-dark #mermaid .reqLabel{fill:#e0dfdf;}html.theme-dark #mermaid .reqLabelBox{fill:hsl(180, 1.5873015873%, 28.3529411765%);fill-opacity:100%;}html.theme-dark #mermaid .req-title-line{stroke:#cccccc;stroke-width:#cccccc;}html.theme-dark #mermaid .relationshipLine{stroke:lightgrey;stroke-width:1;}html.theme-dark #mermaid .relationshipLabel{fill:lightgrey;}html.theme-dark #mermaid :root{--mermaid-}
+/** C4 system */
+html.theme-dark #mermaid .person{stroke:calculated;fill:calculated;} html.theme-dark #mermaid[aria-roledescription=c4] rect {stroke: #ddd;} html.theme-dark #mermaid[aria-roledescription=c4] text {fill:#eee;}
+/** Mind map */
+html.theme-dark #mermaid .section-root.mindmap-node { fill: #ccc; } html.theme-dark #mermaid .section-root.mindmap-node text { fill: black; }
+html.theme-dark #mermaid .mindmap-edges path, html.theme-dark #mermaid .mindmap-node { filter: hue-rotate(180deg) invert(0.9); }
+/** Timeline */
+html.theme-dark #mermaid .timeline text tspan { fill: #eee; } html.theme-dark #mermaid .timeline-node path { fill: #222; }
+
+        
+
+        .prism {
+            page-break-inside: avoid;
+        }
+        
+        /* PrismJS 1.29.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+abap+abnf+actionscript+ada+agda+al+antlr4+apacheconf+apex+apl+applescript+aql+arduino+arff+armasm+arturo+asciidoc+aspnet+asm6502+asmatmel+autohotkey+autoit+avisynth+avro-idl+awk+bash+basic+batch+bbcode+bbj+bicep+birb+bison+bnf+bqn+brainfuck+brightscript+bro+bsl+c+csharp+cpp+cfscript+chaiscript+cil+cilkc+cilkcpp+clojure+cmake+cobol+coffeescript+concurnas+csp+cooklang+coq+crystal+css-extras+csv+cue+cypher+d+dart+dataweave+dax+dhall+diff+django+dns-zone-file+docker+dot+ebnf+editorconfig+eiffel+ejs+elixir+elm+etlua+erb+erlang+excel-formula+fsharp+factor+false+firestore-security-rules+flow+fortran+ftl+gml+gap+gcode+gdscript+gedcom+gettext+gherkin+git+glsl+gn+linker-script+go+go-module+gradle+graphql+groovy+haml+handlebars+haskell+haxe+hcl+hlsl+hoon+http+hpkp+hsts+ichigojam+icon+icu-message-format+idris+ignore+inform7+ini+io+j+java+javadoc+javadoclike+javastacktrace+jexl+jolie+jq+jsdoc+js-extras+json+json5+jsonp+jsstacktrace+js-templates+julia+keepalived+keyman+kotlin+kumir+kusto+latex+latte+less+lilypond+liquid+lisp+livescript+llvm+log+lolcode+lua+magma+makefile+markdown+markup-templating+mata+matlab+maxscript+mel+mermaid+metafont+mizar+mongodb+monkey+moonscript+n1ql+n4js+nand2tetris-hdl+naniscript+nasm+neon+nevod+nginx+nim+nix+nsis+objectivec+ocaml+odin+opencl+openqasm+oz+parigp+parser+pascal+pascaligo+psl+pcaxis+peoplecode+perl+php+phpdoc+php-extras+plant-uml+plsql+powerquery+powershell+processing+prolog+promql+properties+protobuf+pug+puppet+pure+purebasic+purescript+python+qsharp+q+qml+qore+r+racket+cshtml+jsx+tsx+reason+regex+rego+renpy+rescript+rest+rip+roboconf+robotframework+ruby+rust+sas+sass+scss+scala+scheme+shell-session+smali+smalltalk+smarty+sml+solidity+solution-file+soy+sparql+splunk-spl+sqf+sql+squirrel+stan+stata+iecst+stylus+supercollider+swift+systemd+t4-templating+t4-cs+t4-vb+tap+tcl+tt2+textile+toml+tremor+turtle+twig+typescript+typoscript+unrealscript+uorazor+uri+v+vala+vbnet+velocity+verilog+vhdl+vim+visual-basic+warpscript+wasm+web-idl+wgsl+wiki+wolfram+wren+xeora+xml-doc+xojo+xquery+yaml+yang+zig&plugins=highlight-keywords */
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre-wrap;word-spacing:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:16px;margin:0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
+
+        
+
+        :root {
+            width: 95%;
+            max-width: 95vw;
+            padding: 0 0 0 30px;
+        }
+        
+        body {
+            font-family: JetBrains Sans,serif;
+        }
+        
+        a {
+            overflow-wrap: anywhere;
+            width: 100vw;
+        }
+        
+        
+        @font-face {
+            font-family: JetBrains Sans;
+            src: url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Light.woff2) format("woff2"), url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Light.woff) format("woff");
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: JetBrains Sans;
+            src: url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Regular.woff2) format("woff2"), url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-Regular.woff) format("woff");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: JetBrains Sans;
+            src: url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-SemiBold.woff2) format("woff2"), url(https://resources.jetbrains.com/storage/jetbrains-sans/JetBrainsSans-SemiBold.woff) format("woff");
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        
+        code {
+            display: inline;
+            word-break: break-word;
+            font-size: 15px;
+            line-height: inherit;
+            font-variant-ligatures: none;
+            font-family: JetBrains Sans,monospace;
+            white-space: pre-line;
+            overflow-wrap: break-word;
+        }
+        
+        figcaption {
+            margin-top: 5px;
+        }
+        
+        h2 {
+            padding-top: 16px;
+            padding-bottom: 8px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        h3 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        h4 {
+            padding-top: 4px;
+            padding-bottom: 8px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        
+        p {
+            padding: 0;
+            border: 0;
+            line-height: 25px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            padding-bottom: 8px;
+        }
+        
+        div {
+            display: block;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            page-break-inside: avoid;
+        }
+        
+        th, td {
+            border: 1px solid #c4c4c4;
+            padding: 10px;
+            text-align: left;
+            word-break: break-all;
+        }
+        
+        .no-bold {
+            font-weight: normal; 
+        }
+        
+        .entry {
+            display: grid;
+            grid-template-columns: auto max-content;
+            grid-template-areas: "chapter page";
+            align-items: end;
+            gap: 0 .25rem;
+            line-height: 25px;
+        }
+        
+        .toc-link-container{
+            grid-area: chapter;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toc-link{
+            text-decoration: none;
+            color: black;
+        }
+        
+        .toc-link-container::after {
+            position: absolute;
+            padding-left: .25ch;
+            content: " . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+            ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+            text-align: right;
+        }
+        
+        .page {
+            grid-area: page;
+            width: 30px;
+            text-align: right;
+        }
+        
+
+        .table-wrapper {
+            overflow: hidden;
+            box-sizing: border-box;
+            font: inherit;
+        }
+        
+
+        .topic {
+            page-break-before: always;
+        }
+        </style><title>pdfSourceL</title></head><body><div><section class="topic"><div><article class="article"><h1 class="main-title">Table of Contents</h1><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#-512279951">Pre-requisitos</a></div><div class="page">2</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#-1815239477">Atividade 1</a></div><div class="page">11</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#-1815239476">Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC</a></div><div class="page">19</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#871713751">Atividade 2 - Parte 2: Uso de ORMs</a></div><div class="page">25</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#1116840661">Conclus&atilde;o</a></div><div class="page">34</div></div><div class="entry"><div class="toc-link-container"><a class="toc-link" href="#1517202300">Refer&ecirc;ncias</a></div><div class="page">37</div></div></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="-512279951">Pre-requisitos</h1><p id="-512279951#z24xdp7_3">Para o laborat&oacute;rio, foi escolhido um sistema de biblioteca para a continuidade do projeto.</p><section class="detached"><h2 id="-512279951#iniciar-container" data-toc="iniciar-container#starter-topic.md-iniciar-container">Iniciar container</h2><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_9" alt="Imagem ilustrando o in&amp;iacute;cio do container" title="Imagem ilustrando o in&amp;iacute;cio do container" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/Iniciando%20Container"><figcaption class="center-text">Imagem ilustrando o in&iacute;cio do container</figcaption></figure></div></section><section class="detached"><h2 id="-512279951#modelo-entidade-relacionamento" data-toc="modelo-entidade-relacionamento#starter-topic.md-modelo-entidade-relacionamento">Modelo Entidade-Relacionamento</h2><div class="detached mermaid" id="-512279951#z24xdp7_10"><svg aria-roledescription="er" role="graphics-document document" viewBox="-29.107559204101562 0 763.2605590820312 669" style="max-width: 763.2605590820312px;" xmlns="http://www.w3.org/2000/svg" width="100%" id="mermaid"><g></g><defs><marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="0" id="MD_PARENT_START"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="19" id="MD_PARENT_END"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="0" id="ONLY_ONE_START"><path d="M9,0 L9,18 M15,0 L15,18" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="18" id="ONLY_ONE_END"><path d="M3,0 L3,18 M9,0 L9,18" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="0" id="ZERO_OR_ONE_START"><circle r="6" cy="9" cx="21" fill="white" stroke="gray"></circle><path d="M9,0 L9,18" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="30" id="ZERO_OR_ONE_END"><circle r="6" cy="9" cx="9" fill="white" stroke="gray"></circle><path d="M21,0 L21,18" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="18" id="ONE_OR_MORE_START"><path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="27" id="ONE_OR_MORE_END"><path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="18" id="ZERO_OR_MORE_START"><circle r="6" cy="18" cx="48" fill="white" stroke="gray"></circle><path d="M0,18 Q18,0 36,18 Q18,36 0,18" fill="none" stroke="gray"></path></marker></defs><defs><marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="39" id="ZERO_OR_MORE_END"><circle r="6" cy="18" cx="9" fill="white" stroke="gray"></circle><path d="M21,18 Q39,0 57,18 Q39,36 21,18" fill="none" stroke="gray"></path></marker></defs><path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M132.088,149L121.273,157.333C110.458,165.667,88.828,182.333,81.346,199C73.864,215.667,80.531,232.333,83.864,240.667L87.197,249" class="er relationshipLine"></path><path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M402.738,125.401L377.687,137.667C352.636,149.934,302.534,174.467,268.468,195.067C234.401,215.667,216.37,232.333,207.354,240.667L198.338,249" class="er relationshipLine"></path><path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M117.197,399L117.197,407.333C117.197,415.667,117.197,432.333,151.578,455.808C185.959,479.282,254.72,509.565,289.101,524.706L323.481,539.847" class="er relationshipLine"></path><path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M302.738,138.242L319.12,148.368C335.503,158.495,368.267,178.747,384.649,209.707C401.031,240.667,401.031,282.333,401.031,324C401.031,365.667,401.031,407.333,401.031,436.5C401.031,465.667,401.031,482.333,401.031,490.667L401.031,499" class="er relationshipLine"></path><path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M524.257,128L534.592,139.833C544.927,151.667,565.596,175.333,575.931,208C586.266,240.667,586.266,282.333,586.266,324C586.266,365.667,586.266,407.333,568.318,440.278C550.371,473.223,514.476,497.445,496.528,509.557L478.581,521.668" class="er relationshipLine"></path><g transform="translate(128.85408401489258,20 )" id="entity-livros-8a7c2800-703b-5482-825f-7634c5124214"><rect height="129" width="173.88425254821777" y="0" x="0" class="er entityBox"></rect><text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(86.94212627410889,12)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214" class="er entityLabel">livros</text><rect height="21" width="68.046875" y="24" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,34.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-1-type" class="er entityLabel">integer</text><rect height="21" width="82.01839447021484" y="24" x="68.046875" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,34.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-1-name" class="er entityLabel">id</text><rect height="21" width="23.81898307800293" y="24" x="150.06526947021484" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(155.06526947021484,34.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-1-key" class="er entityLabel">PK</text><rect height="21" width="68.046875" y="45" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,55.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-2-type" class="er entityLabel">varchar(255)</text><rect height="21" width="82.01839447021484" y="45" x="68.046875" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,55.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-2-name" class="er entityLabel">titulo</text><rect height="21" width="23.81898307800293" y="45" x="150.06526947021484" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(155.06526947021484,55.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-2-key" class="er entityLabel"></text><rect height="21" width="68.046875" y="66" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,76.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-3-type" class="er entityLabel">varchar(255)</text><rect height="21" width="82.01839447021484" y="66" x="68.046875" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,76.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-3-name" class="er entityLabel">autor</text><rect height="21" width="23.81898307800293" y="66" x="150.06526947021484" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(155.06526947021484,76.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-3-key" class="er entityLabel"></text><rect height="21" width="68.046875" y="87" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,97.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-4-type" class="er entityLabel">integer</text><rect height="21" width="82.01839447021484" y="87" x="68.046875" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,97.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-4-name" class="er entityLabel">ano_publicacao</text><rect height="21" width="23.81898307800293" y="87" x="150.06526947021484" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(155.06526947021484,97.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-4-key" class="er entityLabel"></text><rect height="21" width="68.046875" y="108" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,118.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-5-type" class="er entityLabel">boolean</text><rect height="21" width="82.01839447021484" y="108" x="68.046875" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,118.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-5-name" class="er entityLabel">disponivel</text><rect height="21" width="23.81898307800293" y="108" x="150.06526947021484" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(155.06526947021484,118.5)" y="0" x="0" id="text-entity-livros-8a7c2800-703b-5482-825f-7634c5124214-attr-5-key" class="er entityLabel"></text></g><g transform="translate(402.73833084106445,41 )" id="entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb"><rect height="87" width="167.05531883239746" y="0" x="0" class="er entityBox"></rect><text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(83.52765941619873,12)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb" class="er entityLabel">membros</text><rect height="21" width="68.046875" y="24" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,34.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-1-type" class="er entityLabel">integer</text><rect height="21" width="75.18946075439453" y="24" x="68.046875" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,34.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-1-name" class="er entityLabel">id</text><rect height="21" width="23.81898307800293" y="24" x="143.23633575439453" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(148.23633575439453,34.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-1-key" class="er entityLabel">PK</text><rect height="21" width="68.046875" y="45" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,55.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-2-type" class="er entityLabel">varchar(255)</text><rect height="21" width="75.18946075439453" y="45" x="68.046875" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,55.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-2-name" class="er entityLabel">nome</text><rect height="21" width="23.81898307800293" y="45" x="143.23633575439453" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(148.23633575439453,55.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-2-key" class="er entityLabel"></text><rect height="21" width="68.046875" y="66" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,76.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-3-type" class="er entityLabel">date</text><rect height="21" width="75.18946075439453" y="66" x="68.046875" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(73.046875,76.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-3-name" class="er entityLabel">data_cadastro</text><rect height="21" width="23.81898307800293" y="66" x="143.23633575439453" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(148.23633575439453,76.5)" y="0" x="0" id="text-entity-membros-da2bbbfa-e6c6-5799-9c9c-ece2436da4eb-attr-3-key" class="er entityLabel"></text></g><g transform="translate(20,249 )" id="entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee"><rect height="150" width="194.3949489593506" y="0" x="0" class="er entityBox"></rect><text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(97.1974744796753,12)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee" class="er entityLabel">emprestimos</text><rect height="21" width="46.4375" y="24" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,34.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-1-type" class="er entityLabel">integer</text><rect height="21" width="124.13846588134766" y="24" x="46.4375" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(51.4375,34.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-1-name" class="er entityLabel">id</text><rect height="21" width="23.81898307800293" y="24" x="170.57596588134766" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(175.57596588134766,34.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-1-key" class="er entityLabel">PK</text><rect height="21" width="46.4375" y="45" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,55.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-2-type" class="er entityLabel">integer</text><rect height="21" width="124.13846588134766" y="45" x="46.4375" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(51.4375,55.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-2-name" class="er entityLabel">livro_id</text><rect height="21" width="23.81898307800293" y="45" x="170.57596588134766" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(175.57596588134766,55.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-2-key" class="er entityLabel">FK</text><rect height="21" width="46.4375" y="66" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,76.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-3-type" class="er entityLabel">integer</text><rect height="21" width="124.13846588134766" y="66" x="46.4375" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(51.4375,76.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-3-name" class="er entityLabel">membro_id</text><rect height="21" width="23.81898307800293" y="66" x="170.57596588134766" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(175.57596588134766,76.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-3-key" class="er entityLabel">FK</text><rect height="21" width="46.4375" y="87" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,97.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-4-type" class="er entityLabel">date</text><rect height="21" width="124.13846588134766" y="87" x="46.4375" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(51.4375,97.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-4-name" class="er entityLabel">data_emprestimo</text><rect height="21" width="23.81898307800293" y="87" x="170.57596588134766" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(175.57596588134766,97.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-4-key" class="er entityLabel"></text><rect height="21" width="46.4375" y="108" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,118.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-5-type" class="er entityLabel">date</text><rect height="21" width="124.13846588134766" y="108" x="46.4375" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(51.4375,118.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-5-name" class="er entityLabel">data_devolucao_prevista</text><rect height="21" width="23.81898307800293" y="108" x="170.57596588134766" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(175.57596588134766,118.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-5-key" class="er entityLabel"></text><rect height="21" width="46.4375" y="129" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,139.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-6-type" class="er entityLabel">boolean</text><rect height="21" width="124.13846588134766" y="129" x="46.4375" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(51.4375,139.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-6-name" class="er entityLabel">devolvido</text><rect height="21" width="23.81898307800293" y="129" x="170.57596588134766" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(175.57596588134766,139.5)" y="0" x="0" id="text-entity-emprestimos-673b3e03-d5e6-599c-8fc6-201c32bdb6ee-attr-6-key" class="er entityLabel"></text></g><g transform="translate(323.48133850097656,499 )" id="entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e"><rect height="150" width="155.09951972961426" y="0" x="0" class="er entityBox"></rect><text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(77.54975986480713,12)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e" class="er entityLabel">historico_emprestimos</text><rect height="21" width="41.90095901489258" y="24" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,34.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-1-type" class="er entityLabel">integer</text><rect height="21" width="89.37957763671875" y="24" x="41.90095901489258" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(46.90095901489258,34.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-1-name" class="er entityLabel">id</text><rect height="21" width="23.81898307800293" y="24" x="131.28053665161133" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(136.28053665161133,34.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-1-key" class="er entityLabel">PK</text><rect height="21" width="41.90095901489258" y="45" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,55.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-2-type" class="er entityLabel">integer</text><rect height="21" width="89.37957763671875" y="45" x="41.90095901489258" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(46.90095901489258,55.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-2-name" class="er entityLabel">emprestimo_id</text><rect height="21" width="23.81898307800293" y="45" x="131.28053665161133" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(136.28053665161133,55.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-2-key" class="er entityLabel">FK</text><rect height="21" width="41.90095901489258" y="66" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,76.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-3-type" class="er entityLabel">date</text><rect height="21" width="89.37957763671875" y="66" x="41.90095901489258" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(46.90095901489258,76.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-3-name" class="er entityLabel">data_emprestimo</text><rect height="21" width="23.81898307800293" y="66" x="131.28053665161133" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(136.28053665161133,76.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-3-key" class="er entityLabel"></text><rect height="21" width="41.90095901489258" y="87" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,97.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-4-type" class="er entityLabel">date</text><rect height="21" width="89.37957763671875" y="87" x="41.90095901489258" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(46.90095901489258,97.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-4-name" class="er entityLabel">data_devolucao</text><rect height="21" width="23.81898307800293" y="87" x="131.28053665161133" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(136.28053665161133,97.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-4-key" class="er entityLabel"></text><rect height="21" width="41.90095901489258" y="108" x="0" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,118.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-5-type" class="er entityLabel">integer</text><rect height="21" width="89.37957763671875" y="108" x="41.90095901489258" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(46.90095901489258,118.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-5-name" class="er entityLabel">livro_id</text><rect height="21" width="23.81898307800293" y="108" x="131.28053665161133" class="er attributeBoxOdd"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(136.28053665161133,118.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-5-key" class="er entityLabel">FK</text><rect height="21" width="41.90095901489258" y="129" x="0" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,139.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-6-type" class="er entityLabel">integer</text><rect height="21" width="89.37957763671875" y="129" x="41.90095901489258" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(46.90095901489258,139.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-6-name" class="er entityLabel">membro_id</text><rect height="21" width="23.81898307800293" y="129" x="131.28053665161133" class="er attributeBoxEven"></rect><text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(136.28053665161133,139.5)" y="0" x="0" id="text-entity-historicoemprestimos-e4275628-44de-5b1e-83a2-61334ac9606e-attr-6-key" class="er entityLabel">FK</text></g><rect height="14" width="190.921875" y="183.41693115234375" x="-9.107551574707031" class="er relationshipLabelBox"></rect><text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="190.41693115234375" x="86.35338592529297" id="rel111" class="er relationshipLabel">1 livro pode ter muitos empréstimos</text><rect height="14" width="212.953125" y="172.52818298339844" x="189.18231201171875" class="er relationshipLabelBox"></rect><text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="179.52818298339844" x="295.65887451171875" id="rel112" class="er relationshipLabel">1 membro pode ter muitos empréstimos</text><rect height="14" width="239.49551391601562" y="478.5220947265625" x="84.55438232421875" class="er relationshipLabelBox"></rect><text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="485.5220947265625" x="204.30213928222656" id="rel113" class="er relationshipLabel">1 empréstimo pode ter 1 registro no histórico</text><rect height="14" width="233.5078125" y="291.1513671875" x="284.130126953125" class="er relationshipLabelBox"></rect><text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="298.1513671875" x="400.884033203125" id="rel114" class="er relationshipLabel">1 livro pode ter muitos registros no histórico</text><rect height="14" width="255.53961181640625" y="331.1764831542969" x="458.4685974121094" class="er relationshipLabelBox"></rect><text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="338.1764831542969" x="586.2384033203125" id="rel115" class="er relationshipLabel">1 membro pode ter muitos registros no histórico</text></svg></div></section><section class="detached"><h2 id="-512279951#cria-o-do-banco-de-dados" data-toc="cria-o-do-banco-de-dados#starter-topic.md-cria-o-do-banco-de-dados">Cria&ccedil;&atilde;o do banco de dados</h2><div class="detached code-block" id="-512279951#z24xdp7_11"><pre><code class="language-sql">CREATE DATABASE BIBLIOTECA;</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_12" alt="Imagem mostrando a cria&amp;ccedil;&amp;atilde;o do banco de dados da biblioteca" title="Imagem mostrando a cria&amp;ccedil;&amp;atilde;o do banco de dados da biblioteca" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/Banco%20criado%20da%20blioteca"><figcaption class="center-text">Imagem mostrando a cria&ccedil;&atilde;o do banco de dados da biblioteca</figcaption></figure></div></section><section class="detached"><h2 id="-512279951#criando-as-tabelas" data-toc="criando-as-tabelas#starter-topic.md-criando-as-tabelas">Criando as tabelas</h2><ul class="list" id="-512279951#z24xdp7_13" start="1"><li class="list-item" id="-512279951#z24xdp7_25"><p><span class="control" id="-512279951#z24xdp7_26">Livros:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_14"><pre><code class="language-sql">CREATE TABLE LIVROS (
+    ID SERIAL PRIMARY KEY,
+    ISBN CHAR(13) UNIQUE NOT NULL,
+    TITULO CHARACTER VARYING(100) NOT NULL,
+    AUTOR CHARACTER VARYING(100) NOT NULL,
+    ANO_PUBLICACAO DATE NOT NULL,
+    LIVRO_EM_ESTOQUE BOOLEAN NOT NULL DEFAULT TRUE
+);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_15" alt="Imagem da tabela de livros criada" title="Imagem da tabela de livros criada" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/image.png" width="672" height="223"><figcaption class="center-text">Imagem da tabela de livros criada</figcaption></figure></div><ul class="list" id="-512279951#z24xdp7_16" start="1"><li class="list-item" id="-512279951#z24xdp7_27"><p><span class="control" id="-512279951#z24xdp7_28">Membros:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_17"><pre><code class="language-sql">CREATE TABLE MEMBROS (
+    ID SERIAL PRIMARY KEY,
+    NOME CHARACTER VARYING(120) NOT NULL,
+    DATA_CADASTRO DATE NOT NULL
+);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_18" alt="Imagem da tabela de membros criada" title="Imagem da tabela de membros criada" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/Tabela%20de%20Membros%20criado"><figcaption class="center-text">Imagem da tabela de membros criada</figcaption></figure></div><ul class="list" id="-512279951#z24xdp7_19" start="1"><li class="list-item" id="-512279951#z24xdp7_29"><p><span class="control" id="-512279951#z24xdp7_30">Empr&eacute;stimos:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_20"><pre><code class="language-sql">CREATE TABLE EMPRESTIMOS (
+    ID SERIAL PRIMARY KEY,
+    ID_LIVRO INTEGER,
+    CONSTRAINT FK_LIVRO FOREIGN KEY (ID_LIVRO) REFERENCES LIVROS (ID),
+    ID_MEMBRO INTEGER,
+    CONSTRAINT FK_MEMBRO FOREIGN KEY (ID_MEMBRO) REFERENCES MEMBROS (ID),
+    DATA_EMPRESTIMO DATE DEFAULT CURRENT_DATE,
+    DATA_DEVOLUCAO_PREVISTA DATE,
+    DEVOLVIDO BOOLEAN DEFAULT FALSE
+);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_21" alt="Imagem da tabela de empr&amp;eacute;stimos criada" title="Imagem da tabela de empr&amp;eacute;stimos criada" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741705281493.png" width="1106" height="305"><figcaption class="center-text">Imagem da tabela de empr&eacute;stimos criada</figcaption></figure></div><ul class="list" id="-512279951#z24xdp7_22" start="1"><li class="list-item" id="-512279951#z24xdp7_31"><p><span class="control" id="-512279951#z24xdp7_32">Hist&oacute;rico de Empr&eacute;stimos:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_23"><pre><code class="language-sql">CREATE TABLE HISTORICO_EMPRESTIMOS (
+    ID SERIAL PRIMARY KEY,
+    DATA_DEVOLUCAO DATE,
+    DATA_EMPRESTIMO DATE,
+
+    ID_EMPRESTIMO INTEGER,
+    CONSTRAINT FK_EMPRESTIMO FOREIGN KEY (ID_EMPRESTIMO) REFERENCES LIVROS (ID),
+    ID_LIVRO INTEGER,
+    CONSTRAINT FK_EMPRESTIMO_LIVRO FOREIGN KEY (ID_LIVRO) REFERENCES LIVROS (ID),
+    ID_MEMBRO INTEGER,
+    CONSTRAINT FK_EMPRESTIMO_MEMBRO FOREIGN KEY (ID_MEMBRO) REFERENCES MEMBROS (ID)
+);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_24" alt="Imagem da tabela de hist&amp;oacute;rico de empr&amp;eacute;stimos criada" title="Imagem da tabela de hist&amp;oacute;rico de empr&amp;eacute;stimos criada" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741705528002.png" width="1189" height="722"><figcaption class="center-text">Imagem da tabela de hist&oacute;rico de empr&eacute;stimos criada</figcaption></figure></div></section><section class="detached"><h2 id="-512279951#inserindo-alguns-dados-iniciais-na-tabela" data-toc="inserindo-alguns-dados-iniciais-na-tabela#starter-topic.md-inserindo-alguns-dados-iniciais-na-tabela">Inserindo alguns dados iniciais na tabela</h2><ul class="list" id="-512279951#z24xdp7_33" start="1"><li class="list-item" id="-512279951#z24xdp7_45"><p><span class="control" id="-512279951#z24xdp7_46">Livros:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_34"><pre><code class="language-sql">INSERT INTO LIVROS (ISBN, TITULO, AUTOR, ANO_PUBLICACAO, LIVRO_EM_ESTOQUE)
+VALUES
+('9788535914849', '1984', 'George Orwell', '1949-06-08', TRUE),
+('9788535914863', 'A Revolução dos Bichos', 'George Orwell', '1945-08-17', TRUE),
+('9788535914870', 'O Senhor dos Anéis', 'J.R.R. Tolkien', '1954-07-29', TRUE),
+('9788535914887', 'O Hobbit', 'J.R.R. Tolkien', '1937-09-21', FALSE),
+('9788535914894', 'Cem Anos de Solidão', 'Gabriel García Márquez', '1967-05-30', TRUE);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_35" alt="Imagem mostrando dados de livros inseridos" title="Imagem mostrando dados de livros inseridos" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/Dados%20inseridos"><figcaption class="center-text">Imagem mostrando dados de livros inseridos</figcaption></figure></div><ul class="list" id="-512279951#z24xdp7_36" start="1"><li class="list-item" id="-512279951#z24xdp7_47"><p><span class="control" id="-512279951#z24xdp7_48">Membros:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_37"><pre><code class="language-sql">INSERT INTO MEMBROS (NOME, DATA_CADASTRO) 
+VALUES 
+('João Silva', '2023-01-15'),
+('Maria Oliveira', '2023-02-20'),
+('Carlos Souza', '2023-03-10'),
+('Ana Costa', '2023-04-05'),
+('Pedro Rocha', '2023-05-12');</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_38" alt="Imagem mostrando dados de membros inseridos" title="Imagem mostrando dados de membros inseridos" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/Inserindo%20dados"><figcaption class="center-text">Imagem mostrando dados de membros inseridos</figcaption></figure></div><ul class="list" id="-512279951#z24xdp7_39" start="1"><li class="list-item" id="-512279951#z24xdp7_49"><p><span class="control" id="-512279951#z24xdp7_50">Empr&eacute;stimos:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_40"><pre><code class="language-sql">INSERT INTO EMPRESTIMOS (ID_LIVRO, ID_MEMBRO, DATA_EMPRESTIMO, DATA_DEVOLUCAO_PREVISTA, DEVOLVIDO) 
+VALUES 
+(1, 1, '2023-10-01', '2023-10-15', TRUE),
+(2, 2, '2023-10-02', '2023-10-16', FALSE),
+(3, 3, '2023-10-03', '2023-10-17', TRUE),
+(4, 4, '2023-10-04', '2023-10-18', FALSE),
+(5, 5, '2023-10-05', '2023-10-19', TRUE);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_41" alt="Imagem mostrando dados de empr&amp;eacute;stimos inseridos" title="Imagem mostrando dados de empr&amp;eacute;stimos inseridos" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741707150573_2.png" width="1088" height="373"><figcaption class="center-text">Imagem mostrando dados de empr&eacute;stimos inseridos</figcaption></figure></div><ul class="list" id="-512279951#z24xdp7_42" start="1"><li class="list-item" id="-512279951#z24xdp7_51"><p><span class="control" id="-512279951#z24xdp7_52">Hist&oacute;rico de Empr&eacute;stimos:</span></p></li></ul><div class="detached code-block" id="-512279951#z24xdp7_43"><pre><code class="language-sql">INSERT INTO HISTORICO_EMPRESTIMOS (DATA_DEVOLUCAO, DATA_EMPRESTIMO, ID_EMPRESTIMO, ID_LIVRO, ID_MEMBRO) 
+VALUES 
+('2023-10-15', '2023-10-01', 1, 1, 1),
+('2023-10-16', '2023-10-02', 2, 2, 2),
+('2023-10-17', '2023-10-03', 3, 3, 3),
+('2023-10-18', '2023-10-04', 4, 4, 4),
+('2023-10-19', '2023-10-05', 5, 5, 5);</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-512279951#z24xdp7_44" alt="Imagem mostrando dados de hist&amp;oacute;rico de empr&amp;eacute;stimos inseridos" title="Imagem mostrando dados de hist&amp;oacute;rico de empr&amp;eacute;stimos inseridos" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/a"><figcaption class="center-text">Imagem mostrando dados de hist&oacute;rico de empr&eacute;stimos inseridos</figcaption></figure></div></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="-1815239477">Atividade 1</h1><section class="detached"><h2 id="-1815239477#views" data-toc="views#Atividade-1.md-views">Views</h2><section class="detached"><h3 id="-1815239477#1-view-para-visualiza-o-de-livros-dispon-veis" data-toc="1-view-para-visualiza-o-de-livros-dispon-veis#Atividade-1.md-1-view-para-visualiza-o-de-livros-dispon-veis">1. View para Visualiza&ccedil;&atilde;o de Livros Dispon&iacute;veis</h3><p id="-1815239477#-4uri9r_10">Essa view retorna apenas os livros que est&atilde;o dispon&iacute;veis para empr&eacute;stimo (<span class="inline-code" id="-1815239477#-4uri9r_15">LIVRO_EM_ESTOQUE = TRUE</span>).</p><div class="detached code-block" id="-1815239477#-4uri9r_11"><pre><code class="language-sql">CREATE OR REPLACE VIEW view_livros_disponiveis AS
+SELECT 
+    ID,
+    ISBN,
+    TITULO,
+    AUTOR,
+    ANO_PUBLICACAO
+FROM 
+    LIVROS
+WHERE 
+    LIVRO_EM_ESTOQUE = TRUE;</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239477#-4uri9r_12" alt="Resultado da execu&amp;ccedil;&amp;atilde;o da view de livros dispon&amp;iacute;veis" title="Resultado da execu&amp;ccedil;&amp;atilde;o da view de livros dispon&amp;iacute;veis" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741718377221.png" width="852" height="384"><figcaption class="center-text">Resultado da execu&ccedil;&atilde;o da view de livros dispon&iacute;veis</figcaption></figure></div></section><section class="detached"><h3 id="-1815239477#2-procedimento-armazenado-para-empr-stimo-de-livros" data-toc="2-procedimento-armazenado-para-empr-stimo-de-livros#Atividade-1.md-2-procedimento-armazenado-para-empr-stimo-de-livros">2. Procedimento Armazenado para Empr&eacute;stimo de Livros</h3><p id="-1815239477#-4uri9r_17">Esse procedimento armazenado gerencia o empr&eacute;stimo de um livro, verificando se o livro est&aacute; dispon&iacute;vel e atualizando o status do livro.</p><div class="detached code-block" id="-1815239477#-4uri9r_18"><pre><code class="language-sql">CREATE OR REPLACE PROCEDURE realizar_emprestimo(
+    p_id_livro INTEGER,
+    p_id_membro INTEGER,
+    p_data_devolucao_prevista DATE
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Verifica se o livro está disponível
+    IF NOT EXISTS (SELECT 1 FROM LIVROS WHERE ID = p_id_livro AND LIVRO_EM_ESTOQUE = TRUE) THEN
+        RAISE EXCEPTION 'Livro não está disponível para empréstimo.';
+    END IF;
+
+    -- Insere o empréstimo na tabela EMPRESTIMOS
+    INSERT INTO EMPRESTIMOS (ID_LIVRO, ID_MEMBRO, DATA_DEVOLUCAO_PREVISTA)
+    VALUES (p_id_livro, p_id_membro, p_data_devolucao_prevista);
+
+    -- Atualiza o status do livro para indisponível
+    UPDATE LIVROS
+    SET LIVRO_EM_ESTOQUE = FALSE
+    WHERE ID = p_id_livro;
+
+    RAISE NOTICE 'Empréstimo realizado com sucesso.';
+END;
+$$;</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239477#-4uri9r_19" alt="Confirma&amp;ccedil;&amp;atilde;o da cria&amp;ccedil;&amp;atilde;o do procedimento de empr&amp;eacute;stimo" title="Confirma&amp;ccedil;&amp;atilde;o da cria&amp;ccedil;&amp;atilde;o do procedimento de empr&amp;eacute;stimo" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741718550638.png" width="990" height="785"><figcaption class="center-text">Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do procedimento de empr&eacute;stimo</figcaption></figure></div></section><section class="detached"><h3 id="-1815239477#3-procedimento-armazenado-para-devolu-o-de-livros" data-toc="3-procedimento-armazenado-para-devolu-o-de-livros#Atividade-1.md-3-procedimento-armazenado-para-devolu-o-de-livros">3. Procedimento Armazenado para Devolu&ccedil;&atilde;o de Livros</h3><p id="-1815239477#-4uri9r_23">Esse procedimento armazenado gerencia a devolu&ccedil;&atilde;o de um livro, atualizando o status do livro e registrando a devolu&ccedil;&atilde;o no hist&oacute;rico.</p><div class="detached code-block" id="-1815239477#-4uri9r_24"><pre><code class="language-sql">CREATE OR REPLACE PROCEDURE realizar_devolucao(
+    p_id_emprestimo INTEGER
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Verifica se o empréstimo existe e se o livro ainda não foi devolvido
+    IF NOT EXISTS (SELECT 1 FROM EMPRESTIMOS WHERE ID = p_id_emprestimo AND DEVOLVIDO = FALSE) THEN
+        RAISE EXCEPTION 'Empréstimo não encontrado ou livro já devolvido.';
+    END IF;
+
+    -- Atualiza o status do livro para disponível
+    UPDATE LIVROS
+    SET LIVRO_EM_ESTOQUE = TRUE
+    WHERE ID = (SELECT ID_LIVRO FROM EMPRESTIMOS WHERE ID = p_id_emprestimo);
+
+    -- Marca o empréstimo como devolvido
+    UPDATE EMPRESTIMOS
+    SET DEVOLVIDO = TRUE
+    WHERE ID = p_id_emprestimo;
+
+    -- Insere o registro no histórico de empréstimos
+    INSERT INTO HISTORICO_EMPRESTIMOS (DATA_DEVOLUCAO, DATA_EMPRESTIMO, ID_EMPRESTIMO, ID_LIVRO, ID_MEMBRO)
+    SELECT 
+        CURRENT_DATE, 
+        DATA_EMPRESTIMO, 
+        ID, 
+        ID_LIVRO, 
+        ID_MEMBRO
+    FROM 
+        EMPRESTIMOS
+    WHERE 
+        ID = p_id_emprestimo;
+
+    RAISE NOTICE 'Devolução realizada com sucesso.';
+END;
+$$;</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239477#-4uri9r_25" alt="Confirma&amp;ccedil;&amp;atilde;o da cria&amp;ccedil;&amp;atilde;o do procedimento de devolu&amp;ccedil;&amp;atilde;o" title="Confirma&amp;ccedil;&amp;atilde;o da cria&amp;ccedil;&amp;atilde;o do procedimento de devolu&amp;ccedil;&amp;atilde;o" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741719794874.png" width="1148" height="808"><figcaption class="center-text">Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do procedimento de devolu&ccedil;&atilde;o</figcaption></figure></div></section><section class="detached"><h3 id="-1815239477#4-trigger-para-registrar-empr-stimos-no-hist-rico" data-toc="4-trigger-para-registrar-empr-stimos-no-hist-rico#Atividade-1.md-4-trigger-para-registrar-empr-stimos-no-hist-rico">4. Trigger para Registrar Empr&eacute;stimos no Hist&oacute;rico</h3><p id="-1815239477#-4uri9r_29">Esse trigger &eacute; acionado automaticamente ap&oacute;s a inser&ccedil;&atilde;o de um novo empr&eacute;stimo na tabela <span class="inline-code" id="-1815239477#-4uri9r_34">EMPRESTIMOS</span>, registrando o empr&eacute;stimo no hist&oacute;rico.</p><div class="detached code-block" id="-1815239477#-4uri9r_30"><pre><code class="language-sql">CREATE OR REPLACE FUNCTION registrar_historico_emprestimo()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Insere o registro no histórico de empréstimos
+    INSERT INTO HISTORICO_EMPRESTIMOS (DATA_EMPRESTIMO, ID_EMPRESTIMO, ID_LIVRO, ID_MEMBRO)
+    VALUES (NEW.DATA_EMPRESTIMO, NEW.ID, NEW.ID_LIVRO, NEW.ID_MEMBRO);
+
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trigger_registrar_historico_emprestimo
+AFTER INSERT ON EMPRESTIMOS
+FOR EACH ROW
+EXECUTE FUNCTION registrar_historico_emprestimo();</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239477#-4uri9r_31" alt="Confirma&amp;ccedil;&amp;atilde;o da cria&amp;ccedil;&amp;atilde;o do trigger para registro de empr&amp;eacute;stimos" title="Confirma&amp;ccedil;&amp;atilde;o da cria&amp;ccedil;&amp;atilde;o do trigger para registro de empr&amp;eacute;stimos" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741720081505.png" width="1104" height="754"><figcaption class="center-text">Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do trigger para registro de empr&eacute;stimos</figcaption></figure></div></section><section class="detached"><h3 id="-1815239477#5-view-para-visualiza-o-do-hist-rico-de-empr-stimos" data-toc="5-view-para-visualiza-o-do-hist-rico-de-empr-stimos#Atividade-1.md-5-view-para-visualiza-o-do-hist-rico-de-empr-stimos">5. View para Visualiza&ccedil;&atilde;o do Hist&oacute;rico de Empr&eacute;stimos</h3><p id="-1815239477#-4uri9r_36">Essa view retorna o hist&oacute;rico completo de empr&eacute;stimos, incluindo informa&ccedil;&otilde;es sobre os livros e membros.</p><div class="detached code-block" id="-1815239477#-4uri9r_37"><pre><code class="language-sql">CREATE OR REPLACE VIEW view_historico_emprestimos AS
+SELECT 
+    HE.ID AS HISTORICO_ID,
+    HE.DATA_EMPRESTIMO,
+    HE.DATA_DEVOLUCAO,
+    L.TITULO AS LIVRO,
+    M.NOME AS MEMBRO
+FROM 
+    HISTORICO_EMPRESTIMOS HE
+JOIN 
+    LIVROS L ON HE.ID_LIVRO = L.ID
+JOIN 
+    MEMBROS M ON HE.ID_MEMBRO = M.ID;</code></pre></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239477#-4uri9r_38" alt="Resultado da execu&amp;ccedil;&amp;atilde;o da view de hist&amp;oacute;rico de empr&amp;eacute;stimos" title="Resultado da execu&amp;ccedil;&amp;atilde;o da view de hist&amp;oacute;rico de empr&amp;eacute;stimos" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741720286243.png" width="640" height="855"><figcaption class="center-text">Resultado da execu&ccedil;&atilde;o da view de hist&oacute;rico de empr&eacute;stimos</figcaption></figure></div></section></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="-1815239476">Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC</h1><section class="detached"><h2 id="-1815239476#passo-1-configura-o-do-projeto-java" data-toc="passo-1-configura-o-do-projeto-java#Atividade-2.md-passo-1-configura-o-do-projeto-java">Passo 1: Configura&ccedil;&atilde;o do Projeto Java</h2><ul class="list" id="-1815239476#-4uqva8_9" start="1"><li class="list-item" id="-1815239476#-4uqva8_11"><p>Adicione a depend&ecirc;ncia do driver JDBC do PostgreSQL no seu projeto. Se estiver usando Maven, adicione o seguinte ao seu <span class="inline-code" id="-1815239476#-4uqva8_12">pom.xml</span>:</p></li></ul><div class="detached code-block" id="-1815239476#-4uqva8_10"><pre><code class="language-markup">&lt;dependency&gt;
+    &lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+    &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+    &lt;version&gt;42.6.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre></div></section><section class="detached"><h2 id="-1815239476#passo-2-estabelecer-uma-conex-o" data-toc="passo-2-estabelecer-uma-conex-o#Atividade-2.md-passo-2-estabelecer-uma-conex-o">Passo 2: Estabelecer uma Conex&atilde;o</h2><p id="-1815239476#-4uqva8_13">Aqui est&aacute; um exemplo de como estabelecer uma conex&atilde;o com o banco de dados PostgreSQL:</p><div class="detached code-block" id="-1815239476#-4uqva8_14"><pre><code class="language-java">import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DatabaseConnection {
+    private static final String URL = &quot;jdbc:postgresql://localhost:5432/nome_do_banco&quot;;
+    private static final String USER = &quot;usuario&quot;;
+    private static final String PASSWORD = &quot;senha&quot;;
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+}</code></pre></div></section><section class="detached"><h2 id="-1815239476#passo-3-executar-opera-es-crud" data-toc="passo-3-executar-opera-es-crud#Atividade-2.md-passo-3-executar-opera-es-crud">Passo 3: Executar Opera&ccedil;&otilde;es CRUD</h2><p id="-1815239476#-4uqva8_15">Aqui est&aacute; um exemplo de como executar opera&ccedil;&otilde;es CRUD usando JDBC:</p><div class="detached code-block" id="-1815239476#-4uqva8_16"><pre><code class="language-java">import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class LivroDAO {
+
+    public void inserirLivro(String isbn, String titulo, String autor, String anoPublicacao) {
+        String sql = &quot;INSERT INTO LIVROS (ISBN, TITULO, AUTOR, ANO_PUBLICACAO) VALUES (?, ?, ?, ?)&quot;;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, isbn);
+            pstmt.setString(2, titulo);
+            pstmt.setString(3, autor);
+            pstmt.setDate(4, java.sql.Date.valueOf(anoPublicacao));
+            pstmt.executeUpdate();
+
+            System.out.println(&quot;Livro inserido com sucesso!&quot;);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void listarLivros() {
+        String sql = &quot;SELECT * FROM LIVROS&quot;;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                System.out.println(&quot;ID: &quot; + rs.getInt(&quot;ID&quot;) +
+                        &quot;, Título: &quot; + rs.getString(&quot;TITULO&quot;) +
+                        &quot;, Autor: &quot; + rs.getString(&quot;AUTOR&quot;));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}</code></pre></div></section><section class="detached"><h2 id="-1815239476#passo-4-chamar-procedimentos-armazenados" data-toc="passo-4-chamar-procedimentos-armazenados#Atividade-2.md-passo-4-chamar-procedimentos-armazenados">Passo 4: Chamar Procedimentos Armazenados</h2><p id="-1815239476#-4uqva8_17">Aqui est&aacute; um exemplo de como chamar o procedimento armazenado <span class="inline-code" id="-1815239476#-4uqva8_19">realizar_emprestimo</span>:</p><div class="detached code-block" id="-1815239476#-4uqva8_18"><pre><code class="language-java">import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class EmprestimoService {
+
+    public void realizarEmprestimo(int idLivro, int idMembro, String dataDevolucaoPrevista) {
+        String sql = &quot;{call realizar_emprestimo(?, ?, ?)}&quot;;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             CallableStatement cstmt = conn.prepareCall(sql)) {
+
+            cstmt.setInt(1, idLivro);
+            cstmt.setInt(2, idMembro);
+            cstmt.setDate(3, java.sql.Date.valueOf(dataDevolucaoPrevista));
+            cstmt.execute();
+
+            System.out.println(&quot;Empréstimo realizado com sucesso!&quot;);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}</code></pre></div></section><section class="detached"><h2 id="-1815239476#passo-5-usando-asclasses" data-toc="passo-5-usando-asclasses#Atividade-2.md-passo-5-usando-asclasses">Passo 5: Usando asclasses</h2><div class="detached code-block" id="-1815239476#-4uqva8_20"><pre><code class="language-java">public class Main {
+    public static void main(String[] args) throws SQLException {
+        LivroDAO livroDAO = new LivroDAO();
+
+        // Inserir um livro
+        livroDAO.inserirLivro(&quot;9788535914849&quot;, &quot;1984&quot;, &quot;George Orwell&quot;, &quot;1949-06-08&quot;);
+
+        // Listar livros
+        livroDAO.listarLivros();
+
+        // Atualizar um livro
+        livroDAO.atualizarLivro(1, &quot;1984 - Edição Especial&quot;);
+
+        // Excluir um livro
+        livroDAO.excluirLivro(1);
+
+        // Realizar empréstimo
+        EmprestimoService emprestimoService = new EmprestimoService();
+        emprestimoService.realizarEmprestimo(2, 1, &quot;2023-10-20&quot;);
+    }
+}</code></pre></div></section><section class="detached"><h2 id="-1815239476#executando" data-toc="executando#Atividade-2.md-executando">Executando</h2><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239476#-4uqva8_22" alt="Exibindo tabela MEMBROS" title="Exibindo tabela MEMBROS" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741729095311.png" width="591" height="307"><figcaption class="center-text">Exibindo tabela MEMBROS</figcaption></figure></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239476#-4uqva8_23" alt="Exibindo tabela LIVROS" title="Exibindo tabela LIVROS" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741728915235.png" width="1053" height="317"><figcaption class="center-text">Exibindo tabela LIVROS</figcaption></figure></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239476#-4uqva8_24" alt="Exibindo tabela HISTORICO EMPRESTIMOS" title="Exibindo tabela HISTORICO EMPRESTIMOS" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741729540021.png" width="1342" height="187"><figcaption class="center-text">Exibindo tabela HISTORICO EMPRESTIMOS</figcaption></figure></div><div class="container"><figure class="image-container"><img class="center image image-size" id="-1815239476#-4uqva8_25" alt="Execu&amp;ccedil;&amp;atilde;o bem sucedida com JDBC" title="Execu&amp;ccedil;&amp;atilde;o bem sucedida com JDBC" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741729155800.png" width="973" height="411"><figcaption class="center-text">Execu&ccedil;&atilde;o bem sucedida com JDBC</figcaption></figure></div></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="871713751">Atividade 2 - Parte 2: Uso de ORMs</h1><section class="detached"><h2 id="871713751#passo-1-configura-o-do-hibernate" data-toc="passo-1-configura-o-do-hibernate#Parte-2.md-passo-1-configura-o-do-hibernate">Passo 1: Configura&ccedil;&atilde;o do Hibernate</h2><section class="detached"><h3 id="871713751#adicionar-depend-ncias-no-pom-xml" data-toc="adicionar-depend-ncias-no-pom-xml#Parte-2.md-adicionar-depend-ncias-no-pom-xml">Adicionar Depend&ecirc;ncias no pom.xml</h3><p id="871713751#-o89557_16">Adicione as depend&ecirc;ncias do Hibernate e do driver JDBC do PostgreSQL no arquivo <span class="inline-code" id="871713751#-o89557_20">pom.xml</span> do seu projeto Maven:</p><div class="detached code-block" id="871713751#-o89557_17"><pre><code class="language-markup">&lt;dependencies&gt;
+    &lt;!-- Hibernate Core --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+        &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+        &lt;version&gt;6.3.1.Final&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Driver JDBC do PostgreSQL --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+        &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+        &lt;version&gt;42.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Java Persistence API (JPA) --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;jakarta.persistence&lt;/groupId&gt;
+        &lt;artifactId&gt;jakarta.persistence-api&lt;/artifactId&gt;
+        &lt;version&gt;3.1.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre></div></section></section><section class="detached"><h2 id="871713751#passo-2-configura-o-do-hibernate-cfg-xml" data-toc="passo-2-configura-o-do-hibernate-cfg-xml#Parte-2.md-passo-2-configura-o-do-hibernate-cfg-xml">Passo 2: Configura&ccedil;&atilde;o do hibernate.cfg.xml</h2><p id="871713751#-o89557_22">Crie o arquivo <span class="inline-code" id="871713751#-o89557_26">hibernate.cfg.xml</span> na pasta <span class="inline-code" id="871713751#-o89557_27">src/main/resources</span>. Esse arquivo cont&eacute;m as configura&ccedil;&otilde;es de conex&atilde;o com o banco de dados e o mapeamento das entidades.</p><div class="detached code-block" id="871713751#-o89557_23"><pre><code class="language-markup">&lt;hibernate-configuration&gt;
+    &lt;session-factory&gt;
+        &lt;!-- Configurações de conexão com o banco de dados --&gt;
+        &lt;property name=&quot;hibernate.connection.driver_class&quot;&gt;org.postgresql.Driver&lt;/property&gt;
+        &lt;property name=&quot;hibernate.connection.url&quot;&gt;jdbc:postgresql://localhost:5432/biblioteca&lt;/property&gt;
+        &lt;property name=&quot;hibernate.connection.username&quot;&gt;usuario&lt;/property&gt;
+        &lt;property name=&quot;hibernate.connection.password&quot;&gt;senha&lt;/property&gt;
+
+        &lt;!-- Dialeto do PostgreSQL --&gt;
+        &lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.PostgreSQLDialect&lt;/property&gt;
+
+        &lt;!-- Atualiza o schema do banco de dados automaticamente --&gt;
+        &lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
+
+        &lt;!-- Exibe as consultas SQL no console --&gt;
+        &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+
+        &lt;!-- Mapeamento das entidades --&gt;
+        &lt;mapping class=&quot;com.exemplo.model.Livro&quot;/&gt;
+        &lt;mapping class=&quot;com.exemplo.model.Membro&quot;/&gt;
+    &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;</code></pre></div></section><section class="detached"><h2 id="871713751#passo-3-mapeamento-de-entidades" data-toc="passo-3-mapeamento-de-entidades#Parte-2.md-passo-3-mapeamento-de-entidades">Passo 3: Mapeamento de Entidades</h2><p id="871713751#-o89557_28">Crie as classes de entidade que representam as tabelas do banco de dados. Essas classes devem ser anotadas com as anota&ccedil;&otilde;es do JPA (Java Persistence API).</p><section class="detached"><h3 id="871713751#classe-livro" data-toc="classe-livro#Parte-2.md-classe-livro">Classe Livro</h3><div class="detached code-block" id="871713751#-o89557_32"><pre><code class="language-java">package com.exemplo.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = &quot;LIVROS&quot;)
+public class Livro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String isbn;
+    private String titulo;
+    private String autor;
+
+    @Column(name = &quot;ANO_PUBLICACAO&quot;)
+    private Date anoPublicacao;
+
+    @Column(name = &quot;LIVRO_EM_ESTOQUE&quot;)
+    private boolean livroEmEstoque;
+
+    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public Date getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(Date anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public boolean isLivroEmEstoque() {
+        return livroEmEstoque;
+    }
+
+    public void setLivroEmEstoque(boolean livroEmEstoque) {
+        this.livroEmEstoque = livroEmEstoque;
+    }
+}</code></pre></div></section><section class="detached"><h3 id="871713751#classe-membro" data-toc="classe-membro#Parte-2.md-classe-membro">Classe Membro</h3><div class="detached code-block" id="871713751#-o89557_35"><pre><code class="language-java">package com.exemplo.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = &quot;MEMBROS&quot;)
+public class Membro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String nome;
+
+    @Column(name = &quot;DATA_CADASTRO&quot;)
+    private Date dataCadastro;
+
+    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+}</code></pre></div></section></section><section class="detached"><h2 id="871713751#passo-4-opera-es-com-hibernate" data-toc="passo-4-opera-es-com-hibernate#Parte-2.md-passo-4-opera-es-com-hibernate">Passo 4: Opera&ccedil;&otilde;es com Hibernate</h2><p id="871713751#-o89557_9">Crie uma classe de servi&ccedil;o para realizar opera&ccedil;&otilde;es CRUD usando o Hibernate.</p><section class="detached"><h3 id="871713751#classe-livroservice" data-toc="classe-livroservice#Parte-2.md-classe-livroservice">Classe LivroService</h3><div class="detached code-block" id="871713751#-o89557_12"><pre><code class="language-java">package com.exemplo.service;
+
+import com.exemplo.model.Livro;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class LivroService {
+
+    private static final SessionFactory sessionFactory = new Configuration()
+            .configure(&quot;hibernate.cfg.xml&quot;)
+            .buildSessionFactory();
+
+    // Método para inserir um livro
+    public void inserirLivro(Livro livro) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.persist(livro);
+            session.getTransaction().commit();
+            System.out.println(&quot;Livro inserido com sucesso!&quot;);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Método para buscar um livro por ID
+    public Livro buscarLivroPorId(int id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Livro.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}</code></pre></div></section></section><section class="detached"><h2 id="871713751#passo-5-testando-as-opera-es" data-toc="passo-5-testando-as-opera-es#Parte-2.md-passo-5-testando-as-opera-es">Passo 5: Testando as Opera&ccedil;&otilde;es</h2><p id="871713751#-o89557_39">Crie uma classe <span class="inline-code" id="871713751#-o89557_41">Main</span> para testar as opera&ccedil;&otilde;es com Hibernate.</p><section class="detached"><h3 id="871713751#classe-main" data-toc="classe-main#Parte-2.md-classe-main">Classe Main</h3><div class="detached code-block" id="871713751#-o89557_43"><pre><code class="language-java">package com.exemplo;
+
+import com.exemplo.model.Livro;
+import com.exemplo.service.LivroService;
+
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        LivroService livroService = new LivroService();
+
+        // Criar um novo livro
+        Livro livro = new Livro();
+        livro.setIsbn(&quot;9788535914849&quot;);
+        livro.setTitulo(&quot;1984&quot;);
+        livro.setAutor(&quot;George Orwell&quot;);
+        livro.setAnoPublicacao(new Date());
+        livro.setLivroEmEstoque(true);
+
+        // Inserir o livro no banco de dados
+        livroService.inserirLivro(livro);
+
+        // Buscar o livro por ID
+        Livro livroEncontrado = livroService.buscarLivroPorId(1);
+        if (livroEncontrado != null) {
+            System.out.println(&quot;Livro encontrado: &quot; + livroEncontrado.getTitulo());
+        } else {
+            System.out.println(&quot;Livro não encontrado.&quot;);
+        }
+    }
+}</code></pre></div></section></section><section class="detached"><h2 id="871713751#executando" data-toc="executando#Parte-2.md-executando">Executando</h2><div class="container"><figure class="image-container"><img class="center image image-size" id="871713751#-o89557_45" alt="Exeuca&amp;ccedil;&amp;atilde;o do codigo com sucesso, o livro &amp;quot;1984&amp;quot; foi criado e achado dentro do banco" title="Exeuca&amp;ccedil;&amp;atilde;o do codigo com sucesso, o livro &amp;quot;1984&amp;quot; foi criado e achado dentro do banco" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/1741733428870.png" width="1537" height="523"><figcaption class="center-text">Exeuca&ccedil;&atilde;o do codigo com sucesso, o livro &quot;1984&quot; foi criado e achado dentro do banco</figcaption></figure></div><div class="container"><figure class="image-container"><img class="center image image-size" id="871713751#-o89557_46" alt="Conferindo Tabela LIVROS" title="Conferindo Tabela LIVROS" src="/home/MrPunkdaSilva/IdeaProjects/laboratory-2/Writerside/images/Conferindo%20Tabela%20LIVROS"><figcaption class="center-text">Conferindo Tabela LIVROS</figcaption></figure></div></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="1116840661">Conclus&atilde;o</h1><p id="1116840661#xnxflj_3">s duas atividades propostas &mdash; <span class="control" id="1116840661#xnxflj_9">integra&ccedil;&atilde;o com banco de dados usando JDBC</span> e <span class="control" id="1116840661#xnxflj_10">uso de ORMs como Hibernate</span> &mdash; permitiram explorar duas abordagens distintas para o gerenciamento de dados em aplica&ccedil;&otilde;es Java. Ambas t&ecirc;m seus m&eacute;ritos e s&atilde;o &uacute;teis em diferentes cen&aacute;rios, dependendo das necessidades do projeto. Abaixo, resumo os principais pontos aprendidos e as conclus&otilde;es gerais:</p><section class="detached"><h2 id="1116840661#1-jdbc-java-database-connectivity" data-toc="1-jdbc-java-database-connectivity#Conclusão.md-1-jdbc-java-database-connectivity">1. JDBC (Java Database Connectivity)</h2><ul class="list" id="1116840661#xnxflj_12" start="1"><li class="list-item" id="1116840661#xnxflj_16"><p><span class="control" id="1116840661#xnxflj_20">Controle Total</span>: Com JDBC, temos controle completo sobre as opera&ccedil;&otilde;es do banco de dados. Isso &eacute; &uacute;til em cen&aacute;rios onde &eacute; necess&aacute;rio otimizar consultas SQL complexas ou trabalhar com bancos de dados que exigem opera&ccedil;&otilde;es espec&iacute;ficas.</p></li><li class="list-item" id="1116840661#xnxflj_17"><p><span class="control" id="1116840661#xnxflj_21">Verbosidade</span>: A implementa&ccedil;&atilde;o com JDBC &eacute; mais verbosa, exigindo que o desenvolvedor escreva manualmente o c&oacute;digo SQL, gerencie conex&otilde;es, transa&ccedil;&otilde;es e trate exce&ccedil;&otilde;es.</p></li><li class="list-item" id="1116840661#xnxflj_18"><p><span class="control" id="1116840661#xnxflj_22">Aprendizado Fundamental</span>: Trabalhar com JDBC &eacute; essencial para entender como as opera&ccedil;&otilde;es de banco de dados funcionam &quot;por baixo dos panos&quot;, o que &eacute; &uacute;til para depura&ccedil;&atilde;o e otimiza&ccedil;&atilde;o.</p></li><li class="list-item" id="1116840661#xnxflj_19"><p><span class="control" id="1116840661#xnxflj_23">Desvantagens</span>: A necessidade de escrever muito c&oacute;digo manualmente aumenta a complexidade e a probabilidade de erros, especialmente em projetos grandes.</p></li></ul><p id="1116840661#xnxflj_13"><span class="control" id="1116840661#xnxflj_24">Conclus&atilde;o sobre JDBC</span>: JDBC &eacute; uma ferramenta poderosa para quem precisa de controle total sobre as opera&ccedil;&otilde;es do banco de dados, mas pode se tornar trabalhosa e propensa a erros em projetos de grande escala ou com muitas opera&ccedil;&otilde;es CRUD.</p></section><section class="detached"><h2 id="1116840661#2-orms-object-relational-mapping" data-toc="2-orms-object-relational-mapping#Conclusão.md-2-orms-object-relational-mapping">2. ORMs (Object-Relational Mapping)</h2><ul class="list" id="1116840661#xnxflj_26" start="1"><li class="list-item" id="1116840661#xnxflj_30"><p><span class="control" id="1116840661#xnxflj_34">Produtividade</span>: ORMs como Hibernate simplificam drasticamente o acesso ao banco de dados, eliminando a necessidade de escrever SQL manualmente. Eles mapeiam automaticamente objetos Java para tabelas do banco de dados, o que acelera o desenvolvimento.</p></li><li class="list-item" id="1116840661#xnxflj_31"><p><span class="control" id="1116840661#xnxflj_35">Menos C&oacute;digo</span>: Com ORMs, opera&ccedil;&otilde;es CRUD s&atilde;o realizadas com poucas linhas de c&oacute;digo, e o framework cuida de transa&ccedil;&otilde;es, conex&otilde;es e mapeamento objeto-relacional.</p></li><li class="list-item" id="1116840661#xnxflj_32"><p><span class="control" id="1116840661#xnxflj_36">Abstra&ccedil;&atilde;o</span>: ORMs abstraem a complexidade do banco de dados, permitindo que o desenvolvedor se concentre na l&oacute;gica de neg&oacute;cios em vez de detalhes de implementa&ccedil;&atilde;o.</p></li><li class="list-item" id="1116840661#xnxflj_33"><p><span class="control" id="1116840661#xnxflj_37">Desvantagens</span>: Em cen&aacute;rios complexos, o SQL gerado automaticamente pelo ORM pode n&atilde;o ser otimizado, o que pode impactar o desempenho. Al&eacute;m disso, o uso de ORMs pode limitar o controle sobre as opera&ccedil;&otilde;es do banco de dados.</p></li></ul><p id="1116840661#xnxflj_27"><span class="control" id="1116840661#xnxflj_38">Conclus&atilde;o sobre ORMs</span>: ORMs s&atilde;o ideais para projetos que exigem alta produtividade e manuten&ccedil;&atilde;o simplificada. Eles reduzem a quantidade de c&oacute;digo e a complexidade, mas podem n&atilde;o ser a melhor escolha para cen&aacute;rios que exigem controle total sobre o SQL ou otimiza&ccedil;&otilde;es espec&iacute;ficas.</p></section><section class="detached"><h2 id="1116840661#compara-o-geral" data-toc="compara-o-geral#Conclusão.md-compara-o-geral">Compara&ccedil;&atilde;o Geral</h2><div class="table-wrapper detached"><table id="1116840661#xnxflj_39"><tr class="header-row" id="1116840661#xnxflj_41"><th id="1116840661#xnxflj_46"><p><span class="control" id="1116840661#xnxflj_49">Aspecto</span></p></th><th id="1116840661#xnxflj_47"><p><span class="control" id="1116840661#xnxflj_50">JDBC</span></p></th><th id="1116840661#xnxflj_48"><p><span class="control" id="1116840661#xnxflj_51">ORMs (Hibernate)</span></p></th></tr><tr class="" id="1116840661#xnxflj_42"><td id="1116840661#xnxflj_52"><p><span class="control" id="1116840661#xnxflj_55">Controle</span></p></td><td id="1116840661#xnxflj_53"><p>Total controle sobre o SQL e opera&ccedil;&otilde;es do banco de dados.</p></td><td id="1116840661#xnxflj_54"><p>Menos controle direto sobre o SQL gerado.</p></td></tr><tr class="" id="1116840661#xnxflj_43"><td id="1116840661#xnxflj_56"><p><span class="control" id="1116840661#xnxflj_59">Produtividade</span></p></td><td id="1116840661#xnxflj_57"><p>Menos produtivo (mais c&oacute;digo manual).</p></td><td id="1116840661#xnxflj_58"><p>Mais produtivo (menos c&oacute;digo e mais abstra&ccedil;&atilde;o).</p></td></tr><tr class="" id="1116840661#xnxflj_44"><td id="1116840661#xnxflj_60"><p><span class="control" id="1116840661#xnxflj_63">Complexidade</span></p></td><td id="1116840661#xnxflj_61"><p>Mais complexo e propenso a erros.</p></td><td id="1116840661#xnxflj_62"><p>Menos complexo e menos propenso a erros.</p></td></tr><tr class="" id="1116840661#xnxflj_45"><td id="1116840661#xnxflj_64"><p><span class="control" id="1116840661#xnxflj_67">Uso Ideal</span></p></td><td id="1116840661#xnxflj_65"><p>Projetos pequenos ou que exigem otimiza&ccedil;&otilde;es espec&iacute;ficas.</p></td><td id="1116840661#xnxflj_66"><p>Projetos grandes ou que exigem alta produtividade.</p></td></tr></table></div></section><section class="detached"><h2 id="1116840661#conclus-o-final" data-toc="conclus-o-final#Conclusão.md-conclus-o-final">Conclus&atilde;o Final</h2><p id="1116840661#xnxflj_68">Ambas as abordagens &mdash; <span class="control" id="1116840661#xnxflj_72">JDBC</span> e <span class="control" id="1116840661#xnxflj_73">ORMs</span> &mdash; t&ecirc;m seu lugar no desenvolvimento de software. A escolha entre elas depende das necessidades do projeto:</p><ul class="list" id="1116840661#xnxflj_69" start="1"><li class="list-item" id="1116840661#xnxflj_74"><p><span class="control" id="1116840661#xnxflj_76">JDBC</span> &eacute; mais adequado para cen&aacute;rios onde o controle total sobre as opera&ccedil;&otilde;es do banco de dados &eacute; essencial, como em consultas complexas ou otimiza&ccedil;&otilde;es espec&iacute;ficas.</p></li><li class="list-item" id="1116840661#xnxflj_75"><p><span class="control" id="1116840661#xnxflj_77">ORMs</span> s&atilde;o ideais para projetos que exigem alta produtividade e manuten&ccedil;&atilde;o simplificada, especialmente em aplica&ccedil;&otilde;es com muitas opera&ccedil;&otilde;es CRUD.</p></li></ul><p id="1116840661#xnxflj_70">Dominar ambas as abordagens &eacute; fundamental para um desenvolvedor Java, pois permite escolher a melhor ferramenta para cada situa&ccedil;&atilde;o. Enquanto o JDBC oferece um entendimento profundo das opera&ccedil;&otilde;es de banco de dados, os ORMs trazem agilidade e redu&ccedil;&atilde;o de complexidade, especialmente em projetos de grande escala.</p><p id="1116840661#xnxflj_71">Portanto, a atividade proporcionou uma vis&atilde;o abrangente das duas t&eacute;cnicas, preparando-nos para tomar decis&otilde;es informadas no desenvolvimento de aplica&ccedil;&otilde;es que integram bancos de dados relacionais.</p></section></article></div></section><section class="topic"><div><article class="article"><h1 class="main-title" id="1517202300">Refer&ecirc;ncias</h1><ul class="list" id="1517202300#-rxy3kg_3" start="1"><li class="list-item" id="1517202300#-rxy3kg_4"><p id="1517202300#-rxy3kg_14"><span class="control" id="1517202300#-rxy3kg_15">ORACLE.</span> Java Database Connectivity (JDBC). Dispon&iacute;vel em: https://docs.oracle.com/javase/tutorial/jdbc/ (<a href="https://docs.oracle.com/javase/tutorial/jdbc/">https://docs.oracle.com/javase/tutorial/jdbc/</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_5"><p id="1517202300#-rxy3kg_17"><span class="control" id="1517202300#-rxy3kg_18">HIBERNATE.</span> Hibernate ORM: Documentation. Dispon&iacute;vel em: https://hibernate.org/orm/documentation/ (<a href="https://hibernate.org/orm/documentation/">https://hibernate.org/orm/documentation/</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_6"><p id="1517202300#-rxy3kg_20"><span class="control" id="1517202300#-rxy3kg_21">POSTGRESQL.</span> PostgreSQL JDBC Driver. Dispon&iacute;vel em: https://jdbc.postgresql.org/ (<a href="https://jdbc.postgresql.org/">https://jdbc.postgresql.org/</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_7"><p id="1517202300#-rxy3kg_23"><span class="control" id="1517202300#-rxy3kg_24">DEV MEDIA.</span> Hibernate com JPA: Guia Completo. Dispon&iacute;vel em: https://www.devmedia.com.br/hibernate-com-jpa-guia-completo/37244 (<a href="https://www.devmedia.com.br/hibernate-com-jpa-guia-completo/37244">https://www.devmedia.com.br/hibernate-com-jpa-guia-completo/37244</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_8"><p id="1517202300#-rxy3kg_26"><span class="control" id="1517202300#-rxy3kg_27">TUTORIALS POINT.</span> Hibernate Tutorial. Dispon&iacute;vel em: https://www.tutorialspoint.com/hibernate/index.htm (<a href="https://www.tutorialspoint.com/hibernate/index.htm">https://www.tutorialspoint.com/hibernate/index.htm</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_9"><p id="1517202300#-rxy3kg_29"><span class="control" id="1517202300#-rxy3kg_30">ALURA.</span> Hibernate: Primeiros Passos. Dispon&iacute;vel em: https://www.alura.com.br/artigos/hibernate-primeiros-passos (<a href="https://www.alura.com.br/artigos/hibernate-primeiros-passos">https://www.alura.com.br/artigos/hibernate-primeiros-passos</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_10"><p id="1517202300#-rxy3kg_32"><span class="control" id="1517202300#-rxy3kg_33">ROCKETSEAT.</span> O que &eacute; ORM? YouTube, 2023. Dispon&iacute;vel em: https://www.youtube.com/watch?v=6ZfhG8JpE6k (<a href="https://www.youtube.com/watch?v=6ZfhG8JpE6k">https://www.youtube.com/watch?v=6ZfhG8JpE6k</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_11"><p id="1517202300#-rxy3kg_35"><span class="control" id="1517202300#-rxy3kg_36">FIRESHIP.</span> ORM Explained in 100 Seconds. YouTube, 2023. Dispon&iacute;vel em: https://www.youtube.com/watch?v=6ZfhG8JpE6k (<a href="https://www.youtube.com/watch?v=6ZfhG8JpE6k">https://www.youtube.com/watch?v=6ZfhG8JpE6k</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_12"><p id="1517202300#-rxy3kg_38"><span class="control" id="1517202300#-rxy3kg_39">PROGRAMMING WITH MOSH.</span> What is ORM? YouTube, 2023. Dispon&iacute;vel em: https://www.youtube.com/watch?v=6ZfhG8JpE6k (<a href="https://www.youtube.com/watch?v=6ZfhG8JpE6k">https://www.youtube.com/watch?v=6ZfhG8JpE6k</a>).</p></li><li class="list-item" id="1517202300#-rxy3kg_13"><p id="1517202300#-rxy3kg_41"><span class="control" id="1517202300#-rxy3kg_42">LOIANE GRONER.</span> Entendendo ORM na Pr&aacute;tica. YouTube, 2023. Dispon&iacute;vel em: https://www.youtube.com/watch?v=6r2qBwZRvq4 (<a href="https://www.youtube.com/watch?v=6r2qBwZRvq4">https://www.youtube.com/watch?v=6r2qBwZRvq4</a>).</p></li></ul></article></div></section></div></body></html>

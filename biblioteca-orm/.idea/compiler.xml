@@ -6,12 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="biblioteca-orm" />
         <module name="biblioteca-jdbc" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="laboratory-2" target="23" />
-      <module name="Laboratory-2" target="23" />
-    </bytecodeTargetLevel>
   </component>
 </project>

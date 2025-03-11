@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="l"
+                 name="Laboratory2"
+                 start-page="starter-topic.md">
+
+    <toc-element topic="starter-topic.md"/>
+    <toc-element topic="Atividade-1.md"/>
+    <toc-element topic="Atividade-2.md">
+    </toc-element>
+    <toc-element topic="Parte-2.md"/>
+    <toc-element topic="Conclusão.md"/>
+    <toc-element topic="Refêrencias.md"/>
+</instance-profile>

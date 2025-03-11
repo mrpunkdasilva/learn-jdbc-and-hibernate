@@ -1,0 +1,22 @@
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configurações de conexão com o banco de dados -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/biblioteca</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+
+        <!-- Dialeto do PostgreSQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Atualiza o schema do banco de dados automaticamente -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Exibe as consultas SQL no console -->
+        <property name="show_sql">true</property>
+
+        <!-- Mapeamento das entidades -->
+        <mapping class="org.gustavojesus.models.Livro"/>
+        <mapping class="org.gustavojesus.models.Membro"/>
+    </session-factory>
+</hibernate-configuration>

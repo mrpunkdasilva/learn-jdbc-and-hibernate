@@ -1,0 +1,245 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-14T18:02:44.143380771"><title>Atividade 2 - Parte 2: Uso de ORMs | Laboratory2</title><script type="application/json" id="virtual-toc-data">[{"id":"passo-1-configura-o-do-hibernate","level":0,"title":"Passo 1: Configuração do Hibernate","anchor":"#passo-1-configura-o-do-hibernate"},{"id":"passo-2-configura-o-do-hibernate-cfg-xml","level":0,"title":"Passo 2: Configuração do hibernate.cfg.xml","anchor":"#passo-2-configura-o-do-hibernate-cfg-xml"},{"id":"passo-3-mapeamento-de-entidades","level":0,"title":"Passo 3: Mapeamento de Entidades","anchor":"#passo-3-mapeamento-de-entidades"},{"id":"passo-4-opera-es-com-hibernate","level":0,"title":"Passo 4: Operações com Hibernate","anchor":"#passo-4-opera-es-com-hibernate"},{"id":"passo-5-testando-as-opera-es","level":0,"title":"Passo 5: Testando as Operações","anchor":"#passo-5-testando-as-opera-es"},{"id":"executando","level":0,"title":"Executando","anchor":"#executando"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Atividade 2 - Parte 2: Uso de ORMs | Laboratory2"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laboratory2 Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/parte-2.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Atividade 2 - Parte 2: Uso de ORMs | Laboratory2"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/parte-2.html#webpage",
+    "url": "writerside-documentation/parte-2.html",
+    "name": "Atividade 2 - Parte 2: Uso de ORMs | Laboratory2",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laboratory2 Help"
+}</script><!-- End Schema.org --></head><body data-id="Parte-2" data-main-title="Atividade 2 - Parte 2: Uso de ORMs" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laboratory2  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Parte-2" id="Parte-2.md">Atividade 2 - Parte 2: Uso de ORMs</h1><section class="chapter"><h2 id="passo-1-configura-o-do-hibernate" data-toc="passo-1-configura-o-do-hibernate">Passo 1: Configura&ccedil;&atilde;o do Hibernate</h2><section class="chapter"><h3 id="adicionar-depend-ncias-no-pom-xml" data-toc="adicionar-depend-ncias-no-pom-xml">Adicionar Depend&ecirc;ncias no <code class="code" id="th5fw0_14">pom.xml</code></h3><p id="th5fw0_11">Adicione as depend&ecirc;ncias do Hibernate e do driver JDBC do PostgreSQL no arquivo <code class="code" id="th5fw0_15">pom.xml</code> do seu projeto Maven:</p><div class="code-block" data-lang="markup">
+&lt;dependencies&gt;
+    &lt;!-- Hibernate Core --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+        &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+        &lt;version&gt;6.3.1.Final&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Driver JDBC do PostgreSQL --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+        &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+        &lt;version&gt;42.6.0&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- Java Persistence API (JPA) --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;jakarta.persistence&lt;/groupId&gt;
+        &lt;artifactId&gt;jakarta.persistence-api&lt;/artifactId&gt;
+        &lt;version&gt;3.1.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</div></section></section><section class="chapter"><h2 id="passo-2-configura-o-do-hibernate-cfg-xml" data-toc="passo-2-configura-o-do-hibernate-cfg-xml">Passo 2: Configura&ccedil;&atilde;o do <code class="code" id="th5fw0_20">hibernate.cfg.xml</code></h2><p id="th5fw0_17">Crie o arquivo <code class="code" id="th5fw0_21">hibernate.cfg.xml</code> na pasta <code class="code" id="th5fw0_22">src/main/resources</code>. Esse arquivo cont&eacute;m as configura&ccedil;&otilde;es de conex&atilde;o com o banco de dados e o mapeamento das entidades.</p><div class="code-block" data-lang="markup">
+&lt;hibernate-configuration&gt;
+    &lt;session-factory&gt;
+        &lt;!-- Configurações de conexão com o banco de dados --&gt;
+        &lt;property name=&quot;hibernate.connection.driver_class&quot;&gt;org.postgresql.Driver&lt;/property&gt;
+        &lt;property name=&quot;hibernate.connection.url&quot;&gt;jdbc:postgresql://localhost:5432/biblioteca&lt;/property&gt;
+        &lt;property name=&quot;hibernate.connection.username&quot;&gt;usuario&lt;/property&gt;
+        &lt;property name=&quot;hibernate.connection.password&quot;&gt;senha&lt;/property&gt;
+
+        &lt;!-- Dialeto do PostgreSQL --&gt;
+        &lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.PostgreSQLDialect&lt;/property&gt;
+
+        &lt;!-- Atualiza o schema do banco de dados automaticamente --&gt;
+        &lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
+
+        &lt;!-- Exibe as consultas SQL no console --&gt;
+        &lt;property name=&quot;show_sql&quot;&gt;true&lt;/property&gt;
+
+        &lt;!-- Mapeamento das entidades --&gt;
+        &lt;mapping class=&quot;com.exemplo.model.Livro&quot;/&gt;
+        &lt;mapping class=&quot;com.exemplo.model.Membro&quot;/&gt;
+    &lt;/session-factory&gt;
+&lt;/hibernate-configuration&gt;
+</div></section><section class="chapter"><h2 id="passo-3-mapeamento-de-entidades" data-toc="passo-3-mapeamento-de-entidades">Passo 3: Mapeamento de Entidades</h2><p id="th5fw0_23">Crie as classes de entidade que representam as tabelas do banco de dados. Essas classes devem ser anotadas com as anota&ccedil;&otilde;es do JPA (Java Persistence API).</p><section class="chapter"><h3 id="classe-livro" data-toc="classe-livro">Classe <code class="code" id="th5fw0_28">Livro</code></h3><div class="code-block" data-lang="java">
+package com.exemplo.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = &quot;LIVROS&quot;)
+public class Livro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String isbn;
+    private String titulo;
+    private String autor;
+
+    @Column(name = &quot;ANO_PUBLICACAO&quot;)
+    private Date anoPublicacao;
+
+    @Column(name = &quot;LIVRO_EM_ESTOQUE&quot;)
+    private boolean livroEmEstoque;
+
+    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public Date getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(Date anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
+
+    public boolean isLivroEmEstoque() {
+        return livroEmEstoque;
+    }
+
+    public void setLivroEmEstoque(boolean livroEmEstoque) {
+        this.livroEmEstoque = livroEmEstoque;
+    }
+}
+</div></section><section class="chapter"><h3 id="classe-membro" data-toc="classe-membro">Classe <code class="code" id="th5fw0_32">Membro</code></h3><div class="code-block" data-lang="java">
+package com.exemplo.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = &quot;MEMBROS&quot;)
+public class Membro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String nome;
+
+    @Column(name = &quot;DATA_CADASTRO&quot;)
+    private Date dataCadastro;
+
+    // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+}
+</div></section></section><section class="chapter"><h2 id="passo-4-opera-es-com-hibernate" data-toc="passo-4-opera-es-com-hibernate">Passo 4: Opera&ccedil;&otilde;es com Hibernate</h2><p id="th5fw0_33">Crie uma classe de servi&ccedil;o para realizar opera&ccedil;&otilde;es CRUD usando o Hibernate.</p><section class="chapter"><h3 id="classe-livroservice" data-toc="classe-livroservice">Classe <code class="code" id="th5fw0_38">LivroService</code></h3><div class="code-block" data-lang="java">
+package com.exemplo.service;
+
+import com.exemplo.model.Livro;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class LivroService {
+
+    private static final SessionFactory sessionFactory = new Configuration()
+            .configure(&quot;hibernate.cfg.xml&quot;)
+            .buildSessionFactory();
+
+    // Método para inserir um livro
+    public void inserirLivro(Livro livro) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.persist(livro);
+            session.getTransaction().commit();
+            System.out.println(&quot;Livro inserido com sucesso!&quot;);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Método para buscar um livro por ID
+    public Livro buscarLivroPorId(int id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(Livro.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
+</div></section></section><section class="chapter"><h2 id="passo-5-testando-as-opera-es" data-toc="passo-5-testando-as-opera-es">Passo 5: Testando as Opera&ccedil;&otilde;es</h2><p id="th5fw0_39">Crie uma classe <code class="code" id="th5fw0_41">Main</code> para testar as opera&ccedil;&otilde;es com Hibernate.</p><section class="chapter"><h3 id="classe-main" data-toc="classe-main">Classe <code class="code" id="th5fw0_44">Main</code></h3><div class="code-block" data-lang="java">
+package com.exemplo;
+
+import com.exemplo.model.Livro;
+import com.exemplo.service.LivroService;
+
+import java.util.Date;
+
+public class Main {
+    public static void main(String[] args) {
+        LivroService livroService = new LivroService();
+
+        // Criar um novo livro
+        Livro livro = new Livro();
+        livro.setIsbn(&quot;9788535914849&quot;);
+        livro.setTitulo(&quot;1984&quot;);
+        livro.setAutor(&quot;George Orwell&quot;);
+        livro.setAnoPublicacao(new Date());
+        livro.setLivroEmEstoque(true);
+
+        // Inserir o livro no banco de dados
+        livroService.inserirLivro(livro);
+
+        // Buscar o livro por ID
+        Livro livroEncontrado = livroService.buscarLivroPorId(1);
+        if (livroEncontrado != null) {
+            System.out.println(&quot;Livro encontrado: &quot; + livroEncontrado.getTitulo());
+        } else {
+            System.out.println(&quot;Livro não encontrado.&quot;);
+        }
+    }
+}
+</div></section></section><section class="chapter"><h2 id="executando" data-toc="executando">Executando</h2><figure id="th5fw0_45"><img alt="Exeuca&ccedil;&atilde;o do codigo com sucesso, o livro &quot;1984&quot; foi criado e achado dentro do banco" src="images/1741733428870.png" title="Exeuca&ccedil;&atilde;o do codigo com sucesso, o livro &quot;1984&quot; foi criado e achado dentro do banco" width="1537" height="523"></figure><figure id="th5fw0_46"><img alt="Conferindo Tabela LIVROS" src="images/Conferindo%20Tabela%20LIVROS" title="Conferindo Tabela LIVROS"></figure></section><div class="last-modified">Last modified: 14 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="atividade-2.html" class="navigation-links__prev">Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC</a><a href="conclusão.html" class="navigation-links__next">Conclus&atilde;o</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

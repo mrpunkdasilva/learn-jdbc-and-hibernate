@@ -1,0 +1,128 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-14T18:02:44.144979504"><title>Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC | Laboratory2</title><script type="application/json" id="virtual-toc-data">[{"id":"passo-1-configura-o-do-projeto-java","level":0,"title":"Passo 1: Configuração do Projeto Java","anchor":"#passo-1-configura-o-do-projeto-java"},{"id":"passo-2-estabelecer-uma-conex-o","level":0,"title":"Passo 2: Estabelecer uma Conexão","anchor":"#passo-2-estabelecer-uma-conex-o"},{"id":"passo-3-executar-opera-es-crud","level":0,"title":"Passo 3: Executar Operações CRUD","anchor":"#passo-3-executar-opera-es-crud"},{"id":"passo-4-chamar-procedimentos-armazenados","level":0,"title":"Passo 4: Chamar Procedimentos Armazenados","anchor":"#passo-4-chamar-procedimentos-armazenados"},{"id":"passo-5-usando-asclasses","level":0,"title":"Passo 5: Usando asclasses","anchor":"#passo-5-usando-asclasses"},{"id":"executando","level":0,"title":"Executando","anchor":"#executando"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC | Laboratory2"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laboratory2 Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/atividade-2.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC | Laboratory2"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/atividade-2.html#webpage",
+    "url": "writerside-documentation/atividade-2.html",
+    "name": "Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC | Laboratory2",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laboratory2 Help"
+}</script><!-- End Schema.org --></head><body data-id="Atividade-2" data-main-title="Atividade 2 - Parte 1: Conexão com Banco de Dados usando JDBC" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laboratory2  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Atividade-2" id="Atividade-2.md">Atividade 2 - Parte 1: Conexão com Banco de Dados usando JDBC</h1><section class="chapter"><h2 id="passo-1-configura-o-do-projeto-java" data-toc="passo-1-configura-o-do-projeto-java">Passo 1: Configura&ccedil;&atilde;o do Projeto Java</h2><ul class="list _bullet" id="z9w9cbf_9"><li class="list__item" id="z9w9cbf_11"><p>Adicione a depend&ecirc;ncia do driver JDBC do PostgreSQL no seu projeto. Se estiver usando Maven, adicione o seguinte ao seu <code class="code" id="z9w9cbf_12">pom.xml</code>:</p></li></ul><div class="code-block" data-lang="markup">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+    &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+    &lt;version&gt;42.6.0&lt;/version&gt;
+&lt;/dependency&gt;
+</div></section><section class="chapter"><h2 id="passo-2-estabelecer-uma-conex-o" data-toc="passo-2-estabelecer-uma-conex-o">Passo 2: Estabelecer uma Conex&atilde;o</h2><p id="z9w9cbf_13">Aqui est&aacute; um exemplo de como estabelecer uma conex&atilde;o com o banco de dados PostgreSQL:</p><div class="code-block" data-lang="java">
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DatabaseConnection {
+    private static final String URL = &quot;jdbc:postgresql://localhost:5432/nome_do_banco&quot;;
+    private static final String USER = &quot;usuario&quot;;
+    private static final String PASSWORD = &quot;senha&quot;;
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+}
+</div></section><section class="chapter"><h2 id="passo-3-executar-opera-es-crud" data-toc="passo-3-executar-opera-es-crud">Passo 3: Executar Opera&ccedil;&otilde;es CRUD</h2><p id="z9w9cbf_15">Aqui est&aacute; um exemplo de como executar opera&ccedil;&otilde;es CRUD usando JDBC:</p><div class="code-block" data-lang="java">
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class LivroDAO {
+
+    public void inserirLivro(String isbn, String titulo, String autor, String anoPublicacao) {
+        String sql = &quot;INSERT INTO LIVROS (ISBN, TITULO, AUTOR, ANO_PUBLICACAO) VALUES (?, ?, ?, ?)&quot;;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, isbn);
+            pstmt.setString(2, titulo);
+            pstmt.setString(3, autor);
+            pstmt.setDate(4, java.sql.Date.valueOf(anoPublicacao));
+            pstmt.executeUpdate();
+
+            System.out.println(&quot;Livro inserido com sucesso!&quot;);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void listarLivros() {
+        String sql = &quot;SELECT * FROM LIVROS&quot;;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                System.out.println(&quot;ID: &quot; + rs.getInt(&quot;ID&quot;) +
+                        &quot;, Título: &quot; + rs.getString(&quot;TITULO&quot;) +
+                        &quot;, Autor: &quot; + rs.getString(&quot;AUTOR&quot;));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</div></section><section class="chapter"><h2 id="passo-4-chamar-procedimentos-armazenados" data-toc="passo-4-chamar-procedimentos-armazenados">Passo 4: Chamar Procedimentos Armazenados</h2><p id="z9w9cbf_17">Aqui est&aacute; um exemplo de como chamar o procedimento armazenado <code class="code" id="z9w9cbf_19">realizar_emprestimo</code>:</p><div class="code-block" data-lang="java">
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class EmprestimoService {
+
+    public void realizarEmprestimo(int idLivro, int idMembro, String dataDevolucaoPrevista) {
+        String sql = &quot;{call realizar_emprestimo(?, ?, ?)}&quot;;
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             CallableStatement cstmt = conn.prepareCall(sql)) {
+
+            cstmt.setInt(1, idLivro);
+            cstmt.setInt(2, idMembro);
+            cstmt.setDate(3, java.sql.Date.valueOf(dataDevolucaoPrevista));
+            cstmt.execute();
+
+            System.out.println(&quot;Empréstimo realizado com sucesso!&quot;);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</div></section><section class="chapter"><h2 id="passo-5-usando-asclasses" data-toc="passo-5-usando-asclasses">Passo 5: Usando asclasses</h2><div class="code-block" data-lang="java">
+public class Main {
+    public static void main(String[] args) throws SQLException {
+        LivroDAO livroDAO = new LivroDAO();
+
+        // Inserir um livro
+        livroDAO.inserirLivro(&quot;9788535914849&quot;, &quot;1984&quot;, &quot;George Orwell&quot;, &quot;1949-06-08&quot;);
+
+        // Listar livros
+        livroDAO.listarLivros();
+
+        // Atualizar um livro
+        livroDAO.atualizarLivro(1, &quot;1984 - Edição Especial&quot;);
+
+        // Excluir um livro
+        livroDAO.excluirLivro(1);
+
+        // Realizar empréstimo
+        EmprestimoService emprestimoService = new EmprestimoService();
+        emprestimoService.realizarEmprestimo(2, 1, &quot;2023-10-20&quot;);
+    }
+}
+</div></section><section class="chapter"><h2 id="executando" data-toc="executando">Executando</h2><figure id="z9w9cbf_22"><img alt="Exibindo tabela MEMBROS" src="images/1741729095311.png" title="Exibindo tabela MEMBROS" width="591" height="307"></figure><figure id="z9w9cbf_23"><img alt="Exibindo tabela LIVROS" src="images/1741728915235.png" title="Exibindo tabela LIVROS" width="1053" height="317"></figure><figure id="z9w9cbf_24"><img alt="Exibindo tabela HISTORICO EMPRESTIMOS" src="images/1741729540021.png" title="Exibindo tabela HISTORICO EMPRESTIMOS" width="1342" height="187"></figure><figure id="z9w9cbf_25"><img alt="Execu&ccedil;&atilde;o bem sucedida com JDBC" src="images/1741729155800.png" title="Execu&ccedil;&atilde;o bem sucedida com JDBC" width="973" height="411"></figure></section><div class="last-modified">Last modified: 14 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="atividade-1.html" class="navigation-links__prev">Atividade 1</a><a href="parte-2.html" class="navigation-links__next">Atividade 2 - Parte 2: Uso de ORMs</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

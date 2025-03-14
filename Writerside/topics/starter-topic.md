@@ -1,5 +1,7 @@
 # Pre-requisito
 
+> Link para o repositorio com os códigos: [http://github.com/mrpunkdasilva/learn-jdbc-and-hibernate](http://github.com/mrpunkdasilva/learn-jdbc-and-hibernate)
+
 Para o laboratório, foi escolhido um sistema de biblioteca para a continuidade do projeto.
 
 ## Iniciar container

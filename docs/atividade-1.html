@@ -1,0 +1,124 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-14T18:02:44.138985748"><title>Atividade 1 | Laboratory2</title><script type="application/json" id="virtual-toc-data">[{"id":"views","level":0,"title":"Views","anchor":"#views"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Atividade 1 | Laboratory2"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Laboratory2 Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/atividade-1.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Atividade 1 | Laboratory2"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/atividade-1.html#webpage",
+    "url": "writerside-documentation/atividade-1.html",
+    "name": "Atividade 1 | Laboratory2",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Laboratory2 Help"
+}</script><!-- End Schema.org --></head><body data-id="Atividade-1" data-main-title="Atividade 1" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Laboratory2  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Atividade-1" id="Atividade-1.md">Atividade 1</h1><section class="chapter"><h2 id="views" data-toc="views">Views</h2><section class="chapter"><h3 id="1-view-para-visualiza-o-de-livros-dispon-veis" data-toc="1-view-para-visualiza-o-de-livros-dispon-veis">1. <span class="control" id="z9w8pbw_14">View para Visualiza&ccedil;&atilde;o de Livros Dispon&iacute;veis</span></h3><p id="z9w8pbw_10">Essa view retorna apenas os livros que est&atilde;o dispon&iacute;veis para empr&eacute;stimo (<code class="code" id="z9w8pbw_15">LIVRO_EM_ESTOQUE = TRUE</code>).</p><div class="code-block" data-lang="sql">
+CREATE OR REPLACE VIEW view_livros_disponiveis AS
+SELECT 
+    ID,
+    ISBN,
+    TITULO,
+    AUTOR,
+    ANO_PUBLICACAO
+FROM 
+    LIVROS
+WHERE 
+    LIVRO_EM_ESTOQUE = TRUE;
+</div><figure id="z9w8pbw_12"><img alt="Resultado da execu&ccedil;&atilde;o da view de livros dispon&iacute;veis" src="images/1741718377221.png" title="Resultado da execu&ccedil;&atilde;o da view de livros dispon&iacute;veis" width="852" height="384"></figure></section><section class="chapter"><h3 id="2-procedimento-armazenado-para-empr-stimo-de-livros" data-toc="2-procedimento-armazenado-para-empr-stimo-de-livros">2. <span class="control" id="z9w8pbw_21">Procedimento Armazenado para Empr&eacute;stimo de Livros</span></h3><p id="z9w8pbw_17">Esse procedimento armazenado gerencia o empr&eacute;stimo de um livro, verificando se o livro est&aacute; dispon&iacute;vel e atualizando o status do livro.</p><div class="code-block" data-lang="sql">
+CREATE OR REPLACE PROCEDURE realizar_emprestimo(
+    p_id_livro INTEGER,
+    p_id_membro INTEGER,
+    p_data_devolucao_prevista DATE
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Verifica se o livro está disponível
+    IF NOT EXISTS (SELECT 1 FROM LIVROS WHERE ID = p_id_livro AND LIVRO_EM_ESTOQUE = TRUE) THEN
+        RAISE EXCEPTION 'Livro não está disponível para empréstimo.';
+    END IF;
+
+    -- Insere o empréstimo na tabela EMPRESTIMOS
+    INSERT INTO EMPRESTIMOS (ID_LIVRO, ID_MEMBRO, DATA_DEVOLUCAO_PREVISTA)
+    VALUES (p_id_livro, p_id_membro, p_data_devolucao_prevista);
+
+    -- Atualiza o status do livro para indisponível
+    UPDATE LIVROS
+    SET LIVRO_EM_ESTOQUE = FALSE
+    WHERE ID = p_id_livro;
+
+    RAISE NOTICE 'Empréstimo realizado com sucesso.';
+END;
+$$;
+</div><figure id="z9w8pbw_19"><img alt="Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do procedimento de empr&eacute;stimo" src="images/1741718550638.png" title="Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do procedimento de empr&eacute;stimo" width="990" height="785"></figure></section><section class="chapter"><h3 id="3-procedimento-armazenado-para-devolu-o-de-livros" data-toc="3-procedimento-armazenado-para-devolu-o-de-livros">3. <span class="control" id="z9w8pbw_27">Procedimento Armazenado para Devolu&ccedil;&atilde;o de Livros</span></h3><p id="z9w8pbw_23">Esse procedimento armazenado gerencia a devolu&ccedil;&atilde;o de um livro, atualizando o status do livro e registrando a devolu&ccedil;&atilde;o no hist&oacute;rico.</p><div class="code-block" data-lang="sql">
+CREATE OR REPLACE PROCEDURE realizar_devolucao(
+    p_id_emprestimo INTEGER
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Verifica se o empréstimo existe e se o livro ainda não foi devolvido
+    IF NOT EXISTS (SELECT 1 FROM EMPRESTIMOS WHERE ID = p_id_emprestimo AND DEVOLVIDO = FALSE) THEN
+        RAISE EXCEPTION 'Empréstimo não encontrado ou livro já devolvido.';
+    END IF;
+
+    -- Atualiza o status do livro para disponível
+    UPDATE LIVROS
+    SET LIVRO_EM_ESTOQUE = TRUE
+    WHERE ID = (SELECT ID_LIVRO FROM EMPRESTIMOS WHERE ID = p_id_emprestimo);
+
+    -- Marca o empréstimo como devolvido
+    UPDATE EMPRESTIMOS
+    SET DEVOLVIDO = TRUE
+    WHERE ID = p_id_emprestimo;
+
+    -- Insere o registro no histórico de empréstimos
+    INSERT INTO HISTORICO_EMPRESTIMOS (DATA_DEVOLUCAO, DATA_EMPRESTIMO, ID_EMPRESTIMO, ID_LIVRO, ID_MEMBRO)
+    SELECT 
+        CURRENT_DATE, 
+        DATA_EMPRESTIMO, 
+        ID, 
+        ID_LIVRO, 
+        ID_MEMBRO
+    FROM 
+        EMPRESTIMOS
+    WHERE 
+        ID = p_id_emprestimo;
+
+    RAISE NOTICE 'Devolução realizada com sucesso.';
+END;
+$$;
+</div><figure id="z9w8pbw_25"><img alt="Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do procedimento de devolu&ccedil;&atilde;o" src="images/1741719794874.png" title="Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do procedimento de devolu&ccedil;&atilde;o" width="1148" height="808"></figure></section><section class="chapter"><h3 id="4-trigger-para-registrar-empr-stimos-no-hist-rico" data-toc="4-trigger-para-registrar-empr-stimos-no-hist-rico">4. <span class="control" id="z9w8pbw_33">Trigger para Registrar Empr&eacute;stimos no Hist&oacute;rico</span></h3><p id="z9w8pbw_29">Esse trigger &eacute; acionado automaticamente ap&oacute;s a inser&ccedil;&atilde;o de um novo empr&eacute;stimo na tabela <code class="code" id="z9w8pbw_34">EMPRESTIMOS</code>, registrando o empr&eacute;stimo no hist&oacute;rico.</p><div class="code-block" data-lang="sql">
+CREATE OR REPLACE FUNCTION registrar_historico_emprestimo()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- Insere o registro no histórico de empréstimos
+    INSERT INTO HISTORICO_EMPRESTIMOS (DATA_EMPRESTIMO, ID_EMPRESTIMO, ID_LIVRO, ID_MEMBRO)
+    VALUES (NEW.DATA_EMPRESTIMO, NEW.ID, NEW.ID_LIVRO, NEW.ID_MEMBRO);
+
+    RETURN NEW;
+END;
+$$;
+
+CREATE TRIGGER trigger_registrar_historico_emprestimo
+AFTER INSERT ON EMPRESTIMOS
+FOR EACH ROW
+EXECUTE FUNCTION registrar_historico_emprestimo();
+</div><figure id="z9w8pbw_31"><img alt="Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do trigger para registro de empr&eacute;stimos" src="images/1741720081505.png" title="Confirma&ccedil;&atilde;o da cria&ccedil;&atilde;o do trigger para registro de empr&eacute;stimos" width="1104" height="754"></figure></section><section class="chapter"><h3 id="5-view-para-visualiza-o-do-hist-rico-de-empr-stimos" data-toc="5-view-para-visualiza-o-do-hist-rico-de-empr-stimos">5. <span class="control" id="z9w8pbw_39">View para Visualiza&ccedil;&atilde;o do Hist&oacute;rico de Empr&eacute;stimos</span></h3><p id="z9w8pbw_36">Essa view retorna o hist&oacute;rico completo de empr&eacute;stimos, incluindo informa&ccedil;&otilde;es sobre os livros e membros.</p><div class="code-block" data-lang="sql">
+CREATE OR REPLACE VIEW view_historico_emprestimos AS
+SELECT 
+    HE.ID AS HISTORICO_ID,
+    HE.DATA_EMPRESTIMO,
+    HE.DATA_DEVOLUCAO,
+    L.TITULO AS LIVRO,
+    M.NOME AS MEMBRO
+FROM 
+    HISTORICO_EMPRESTIMOS HE
+JOIN 
+    LIVROS L ON HE.ID_LIVRO = L.ID
+JOIN 
+    MEMBROS M ON HE.ID_MEMBRO = M.ID;
+</div><figure id="z9w8pbw_38"><img alt="Resultado da execu&ccedil;&atilde;o da view de hist&oacute;rico de empr&eacute;stimos" src="images/1741720286243.png" title="Resultado da execu&ccedil;&atilde;o da view de hist&oacute;rico de empr&eacute;stimos" width="640" height="855"></figure></section></section><div class="last-modified">Last modified: 14 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="starter-topic.html" class="navigation-links__prev">Pre-requisito</a><a href="atividade-2.html" class="navigation-links__next">Atividade 2 - Parte 1: Conex&atilde;o com Banco de Dados usando JDBC</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

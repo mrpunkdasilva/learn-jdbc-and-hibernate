@@ -1,4 +1,4 @@
-# Laboratory 2 
+# Learn JDBC & Hibernate 
 
 ### Requisitos do Sistema:
 
